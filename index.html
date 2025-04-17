@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan DAMOTTE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a8c8a;           /* Turquoise grisé */
+            --primary-light: #62a5a3;
+            --primary-dark: #366d6b;
+            --accent: #ffc12d;            /* Jaune dynamique */
+            --accent-light: #ffd15f;
+            --accent-dark: #e5a700;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #e2e8f0;
+            --text: #334155;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        body {
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            background-color: var(--white);
+            box-shadow: 0 15px 35px var(--shadow);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        /* Header Section */
+        header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
+            transform: rotate(45deg);
+            z-index: 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-info {
+            max-width: 70%;
+        }
+        
+        .profile-name h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+        
+        .profile-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+        
+        .profile-intro {
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 600px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 12px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            margin-right: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-icon {
+            margin-right: 8px;
+        }
+        
+        .contact-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        /* Sidebar - Skills */
+        .sidebar {
+            background-color: var(--light);
+            padding: 25px 20px;
+            box-shadow: inset -5px 0 15px -5px var(--shadow);
+        }
+        
+        .sidebar h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        /* Modern Skills Display */
+        .skills-container {
+            margin-bottom: 25px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .skills-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .skills-icon {
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+        
+        .skills-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+        
+        .skills-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .skills-content {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-badge {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-badge:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .skill-tech {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin: 4px;
+            display: inline-block;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .skill-tech:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 30px 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        
+        .timeline-header {
+            background-color: var(--light);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+        
+        .timeline-header:hover {
+            background-color: rgba(74, 140, 138, 0.1);
+        }
+        
+        .timeline-title-wrapper {
+            flex: 1;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-subtitle {
+            color: var(--accent);
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 15px;
+        }
+        
+        .timeline-date {
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .timeline-summary {
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+        
+        .timeline-dropdown-icon {
+            margin-left: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-dropdown-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary);
+        }
+        
+        .timeline-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+        
+        .timeline-content-inner {
+            padding: 20px;
+        }
+        
+        .timeline-content p {
+            margin-bottom: 8px;
+        }
+        
+        .timeline-content.active {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        .timeline-header.active .timeline-dropdown-icon {
+            transform: rotate(180deg);
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .interest-item {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .interest-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .interest-icon {
+            font-size: 1.3rem;
+            margin-right: 8px;
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                width: 95%;
+            }
+            
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .profile-info {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .timeline-header {
+                flex-wrap: wrap;
+            }
+            
+            .timeline-date {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER SECTION -->
+        <header>
+            <div class="header-content">
+                <div class="profile-info">
+                    <div class="profile-name">
+                        <h1>Alan DAMOTTE</h1>
+                    </div>
+                    <div class="profile-title">TEAM MANAGER – DIRECTEUR DE PROJET</div>
+                    <div class="profile-intro">
+                        Team manager ayant fait ses preuves dans le pilotage de projets complexes et stratégiques. Je suis expérimenté dans le management d'équipe comptant jusqu'à 20 ingénieurs et en collaboration avec des équipes cross-fonctionnelles. J'aime continuer à me développer, tant sur le plan professionnel que personnel, pour atteindre de nouveaux objectifs, et m'engage dans une quête constante d'amélioration continue pour stimuler l'innovation.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
+                        </svg>
+                    </div>
+                    <div>21 Rue du regard doux, 38230 Tignieu-Jameyzieu</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+                        </svg>
+                    </div>
+                    <div>06.33.70.80.29</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+                        </svg>
+                    </div>
+                    <div><a href="mailto:Alan.damotte@gmail.com">Alan.damotte@gmail.com</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" />
+                        </svg>
+                    </div>
+                    <div>Anglais - Professionnel - Parlé et écrit (TOEIC 920)</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                        </svg>
+                    </div>
+                    <div>31 ans - Permis B</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z" />
+                        </svg>
+                    </div>
+                    <div><a href="https://www.linkedin.com/in/alandamotte/" target="_blank">linkedin.com/in/alandamotte</a></div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- SIDEBAR - SKILLS -->
+        <div class="sidebar">
+            <h2>COMPÉTENCES</h2>
+            
+            <!-- Management Skills -->
+            <div class="skills-container">
+                <div class="skills-header">
+                    <div class="skills-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" />
+                        </svg>
+                    </div>
+                    <div class="skills-title">Management</div>
+                </div>
+                <div class="skills-content">
+                    <div class="skills-grid">
+                        <div class="skill-badge">Leadership</div>
+                        <div class="skill-badge">Suivi collaborateurs</div>
+                        <div class="skill-badge">Définition objectifs</div>
+                        <div class="skill-badge">Revue budgétaire</div>
+                        <div class="skill-badge">Gestion ressources</div>
+                        <div class="skill-badge">People review</div>
+                        <div class="skill-badge">Coaching</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Management Skills -->
+            <div class="skills-container">
+                <div class="skills-header">
+                    <div class="skills-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" />
+                        </svg>
+                    </div>
+                    <div class="skills-title">Gestion de projet</div>
+                </div>
+                <div class="skills-content">
+                    <div class="skills-grid">
+                        <div class="skill-badge">Pilotage ressources</div>
+                        <div class="skill-badge">Relation client</div>
+                        <div class="skill-badge">Analyse technique</div>
+                        <div class="skill-badge">Planification</div>
+                        <div class="skill-badge">Méthodes Agiles</div>
+                        <div class="skill-badge">Avant-ventes</div>
+                        <div class="skill-badge">Suivi budgétaire</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technical Skills -->
+            <div class="skills-container">
+                <div class="skills-header">
+                    <div class="skills-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" />
+                        </svg>
+                    </div>
+                    <div class="skills-title">Technologies</div>
+                </div>
+                <div class="skills-content">
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <div class="skill-tech">Windows/Unix</div>
+                        <div class="skill-tech">REST APIs</div>
+                        <div class="skill-tech">Java/Spring</div>
+                        <div class="skill-tech">CI/CD</div>
+                        <div class="skill-tech">Git/Gitlab</div>
+                        <div class="skill-tech">Docker</div>
+                        <div class="skill-tech">Openshift</div>
+                        <div class="skill-tech">Cloud GCP</div>
+                        <div class="skill-tech">EmberJs</div>
+                        <div class="skill-tech">Elastic</div>
+                        <div class="skill-tech">MySQL</div>
+                        <div class="skill-tech">JIRA</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personal Skills -->
+            <div class="skills-container">
+                <div class="skills-header">
+                    <div class="skills-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" />
+                        </svg>
+                    </div>
+                    <div class="skills-title">Qualités personnelles</div>
+                </div>
+                <div class="skills-content">
+                    <div class="skills-grid">
+                        <div class="skill-badge">Esprit d'équipe</div>
+                        <div class="skill-badge">Organisation</div>
+                        <div class="skill-badge">Communication</div>
+                        <div class="skill-badge">Esprit d'analyse</div>
+                        <div class="skill-badge">Adaptabilité</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- EXPERIENCE SECTION -->
+            <div class="section">
+                <h2 class="section-title">EXPÉRIENCE PROFESSIONNELLE</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header active">
+                            <div class="timeline-title-wrapper">
+                                <div class="timeline-title">TEAM MANAGER – OPEN BANKING</div>
+                                <div>
+                                    <span class="timeline-subtitle">WORLDLINE</span>
+                                    <span class="timeline-date">MAI 2021 - PRÉSENT</span>
+                                </div>
+                                <div class="timeline-summary">Direction d'une équipe de 20 collaborateurs et gestion de projet SaaS (3M€) pour 25 clients internationaux.</div>
+                            </div>
+                            <div class="timeline-dropdown-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline-content active">
+                            <div class="timeline-content-inner">
+                                <p>• Direction de projet sur des enjeux de mise en conformité PSD2 (Produit fourni en mode SaaS - Chiffre d'affaire de 3Mio€ - Amélioration de la marge projet de 20% en 2 ans) – Build & Run pour 25 clients internationaux</p>
+                                <p>• Gestion du budget et des ressources – Avant-vente – Définition de la stratégie technico-fonctionnelle du produit – Suivi de l'évolution de la réglementation (dont PSD3 / PSR1 / Instant Payment - Verification of Payee)</p>
+                                <p>• Management opérationnel et hiérarchique d'une équipe de 20 collaborateurs – Recrutement – Plan de formation – Entretiens de performances et suivi de carrière – People review / Salary review – Coaching</p>
+                                <p>• Amélioration de la satisfaction d'équipe de 10% en 2 ans</p>
+                                <p>• Conduite de projet de migration Cloud (Google Cloud Platform) – Démarche SRE – Amélioration continue – Conduite du changement et transition DevOps / FinOps</p>
+                                <p>• Référent du département sur l'utilisation de l'IA au sein des produits et des équipes</p>
+                                <div class="badge">Identifié parmi les Talents Worldline 2022, 2023 et 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div class="timeline-title-wrapper">
+                                <div class="timeline-title">CHEF DE PROJET – OPEN BANKING</div>
+                                <div>
+                                    <span class="timeline-subtitle">WORLDLINE</span>
+                                    <span class="timeline-date">2019 - 2021</span>
+                                </div>
+                                <div class="timeline-summary">Gestion de projet et relation client pour un portefeuille de 10 clients internationaux.</div>
+                            </div>
+                            <div class="timeline-dropdown-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-content-inner">
+                                <p>• Gestion de projet - Relation client et pilotage d'un portefeuille de 10 clients internationaux</p>
+                                <p>• Suivi des déploiements, des lots de développements spécifiques et de la recette – Participation aux enjeux d'exploitation de la solution et support de recette et production</p>
+                                <p>• Pilotage de l'industrialisation et de l'amélioration des processus d'exploitation</p>
+                                <p>• Implication dans la stratégie produit</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div class="timeline-title-wrapper">
+                                <div class="timeline-title">CHEF DE PROJET – COTIZEN</div>
+                                <div>
+                                    <span class="timeline-subtitle">WORLDLINE</span>
+                                    <span class="timeline-date">2018</span>
+                                </div>
+                                <div class="timeline-summary">Gestion d'un service de paiement en ligne pour 4 grandes fédérations françaises.</div>
+                            </div>
+                            <div class="timeline-dropdown-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-content-inner">
+                                <p>• Service de gestion des ordres de paiement en ligne pour le compte de 4 grandes fédérations françaises</p>
+                                <p>• Gestion de projet, suivi des demandes d'évolutions du service, gestion des partenaires, suivi de production du service</p>
+                                <p>• Encadrement d'une équipe de développeurs pour les phases d'évolution et d'exploitation du service, organisation des comités de projet hebdomadaires</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div class="timeline-title-wrapper">
+                                <div class="timeline-title">RESPONSABLE D'APPLICATION – CYKLEO</div>
+                                <div>
+                                    <span class="timeline-subtitle">WORLDLINE</span>
+                                    <span class="timeline-date">2016 - 2018</span>
+                                </div>
+                                <div class="timeline-summary">Conception et développement d'un service de location de vélos en libre-service.</div>
+                            </div>
+                            <div class="timeline-dropdown-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-content-inner">
+                                <p>• Service de gestion de location de vélos en libre-service</p>
+                                <p>• Conception, rédaction de spécifications fonctionnelles et techniques, développements logiciels</p>
+                                <p>• Elaboration de propositions commerciales, relation client et exploitation de la solution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FORMATION SECTION -->
+            <div class="section">
+                <h2 class="section-title">FORMATION ET DIPLÔME</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title-wrapper">
+                            <div class="timeline-title">DIPLÔME D'INGÉNIEUR INFORMATIQUE</div>
+                            <div>
+                                <span class="timeline-subtitle">POLYTECH GRENOBLE</span>
+                                <span class="timeline-date">2016</span>
+                            </div>
+                            <div class="timeline-summary">Major de promotion avec mention Bien - Filière RICM</div>
+                        </div>
+                        <div class="timeline-dropdown-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-content-inner">
+                            <p>• Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</p>
+                            <p>• Mention Bien</p>
+                            <p>• Major de promotion 2016</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- INTERESTS SECTION -->
+            <div class="section">
+                <h2 class="section-title">CENTRES D'INTÉRÊTS</h2>
+                
+                <div class="interests">
+                    <div class="interest-item">
+                        <div class="interest-icon">🏃‍♂️</div>
+                        <div>Sport</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">🌱</div>
+                        <div>Jardinage</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">💻</div>
+                        <div>High-Tech</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">🎮</div>
+                        <div>Jeux-Vidéos</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon">🎨</div>
+                        <div>Infographie</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle dropdown functionality
+            const timelineHeaders = document.querySelectorAll('.timeline-header');
+            
+            timelineHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    // Toggle active class on header
+                    this.classList.toggle('active');
+                    
+                    // Get the content element
+                    const content = this.nextElementSibling;
+                    
+                    // Toggle active class on content
+                    if (content.classList.contains('active')) {
+                        content.classList.remove('active');
+                    } else {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
