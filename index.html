@@ -7,10 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4a8c8a;           /* Turquoise grisé */
+            --primary: #4a8c8a;
             --primary-light: #62a5a3;
             --primary-dark: #366d6b;
-            --accent: #ffc12d;            /* Jaune dynamique */
+            --accent: #ffc12d;
             --accent-light: #ffd15f;
             --accent-dark: #e5a700;
             --light: #f8fafc;
@@ -18,648 +18,160 @@
             --gray: #e2e8f0;
             --text: #334155;
             --white: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow: rgba(0,0,0,.1);
         }
+        * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; transition:all .3s ease;}
+        body {color:var(--text); background-color:var(--light); line-height:1.6; font-size:15px;}
+        .container {max-width:1100px; margin:30px auto; display:grid; grid-template-columns:300px 1fr; background-color:var(--white); box-shadow:0 15px 35px var(--shadow); border-radius:12px; overflow:hidden;}
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-        }
+        /* Header Section */
+        header {grid-column:1/-1; background:linear-gradient(135deg,var(--primary-dark),var(--primary)); color:white; padding:15px 25px; position:relative; overflow:hidden;}
+        header::before {content:''; position:absolute; top:-50%; right:-50%; width:100%; height:200%; background:linear-gradient(135deg,transparent,rgba(255,255,255,.1)); transform:rotate(45deg); z-index:0;}
+        .header-content {display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; position:relative; z-index:1; margin-bottom:10px;}
+        .profile-info {max-width:75%;}
+        .profile-name h1 {font-size:2.2rem; font-weight:700; margin-bottom:3px; letter-spacing:-.5px;}
+        .profile-title {font-size:1rem; font-weight:500; margin-bottom:6px; opacity:.9; letter-spacing:1px;}
+        .profile-intro {font-weight:300; line-height:1.4; max-width:600px; font-size:.9rem;}
         
-        body {
-            color: var(--text);
-            background-color: var(--light);
-            line-height: 1.6;
-            font-size: 15px;
-        }
+        /* Contact Info */
+        .contact-info {display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;}
+        .contact-item {display:flex; align-items:center; background-color:rgba(255,255,255,.15); padding:4px 8px; border-radius:20px; backdrop-filter:blur(5px); margin-right:6px; box-shadow:0 2px 4px rgba(0,0,0,.1);}
+        .contact-item, .contact-item a {transition:transform .3s ease,box-shadow .3s ease; font-size:.85rem;}
+        .contact-item:hover {transform:translateY(-3px); box-shadow:0 6px 12px rgba(0,0,0,.15); background-color:rgba(255,255,255,.25);}
+        .contact-item a {color:white; text-decoration:none;}
+        .contact-item a:hover {text-decoration:underline;}
+        .contact-icon {margin-right:6px;}
+        .contact-icon svg {width:14px; height:14px; fill:currentColor;}
         
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            background-color: var(--white);
-            box-shadow: 0 15px 35px var(--shadow);
-            border-radius: 12px;
-            overflow: hidden;
-        }
+        /* Sidebar */
+        .sidebar {background-color:var(--light); padding:25px 20px; box-shadow:inset -5px 0 15px -5px var(--shadow);}
+        .sidebar h2 {color:var(--primary); font-size:1.5rem; margin-bottom:20px; padding-bottom:8px; border-bottom:2px solid var(--primary);}
         
-        /* Header Section - COMPACTED */
-        header {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-            padding: 15px 25px;  /* Reduced padding further */
-            position: relative;
-            overflow: hidden;
-        }
+        /* Skills */
+        .skills-container {margin-bottom:18px;}
+        .skills-header {display:flex; align-items:center; margin-bottom:10px; background-color:var(--primary); color:white; padding:8px 12px; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,.1);}
+        .skills-icon {background-color:var(--white); color:var(--primary); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-right:10px;}
+        .skills-icon svg {width:14px; height:14px;}
+        .skills-title {font-weight:600; font-size:1rem; letter-spacing:.5px;}
         
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
-            transform: rotate(45deg);
-            z-index: 0;
-        }
+        /* Skill Groups */
+        .skill-group {margin-bottom:8px;}
+        .skill-group:last-child {margin-bottom:0;}
+        .skill-group-header {font-size:.7rem; color:#666; margin-top:6px; margin-bottom:3px; border-bottom:1px dashed #ccc; padding-bottom:2px; font-weight:600;}
+        .skill-group-content {display:flex; flex-wrap:wrap; gap:4px;}
         
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-            margin-bottom: 10px; /* Reduced margin */
-        }
+        /* Skill Badges */
+        .skill-badge-compact {padding:3px 8px; border-radius:3px; font-size:.75rem; margin:2px; display:inline-block; color:white; box-shadow:0 1px 2px rgba(0,0,0,.1); transition:all .2s ease;}
+        .skill-badge-compact:hover {transform:translateY(-2px) scale(1.03); box-shadow:0 2px 4px rgba(0,0,0,.15);}
         
-        .profile-info {
-            max-width: 75%;
-        }
-        
-        .profile-name h1 {
-            font-size: 2.2rem;  /* Further reduced font size */
-            font-weight: 700;
-            margin-bottom: 3px;  /* Reduced margin */
-            letter-spacing: -0.5px;
-        }
-        
-        .profile-title {
-            font-size: 1rem;  /* Further reduced font size */
-            font-weight: 500;
-            margin-bottom: 6px;  /* Reduced margin */
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-        
-        .profile-intro {
-            font-weight: 300;
-            line-height: 1.4;  /* Reduced line height */
-            max-width: 600px;
-            font-size: 0.9rem;  /* Further reduced font size */
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;  /* Further reduced gap */
-            margin-top: 8px;  /* Further reduced margin */
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 4px 8px;  /* Further reduced padding */
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-            margin-right: 6px;  /* Further reduced margin */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            font-size: 0.85rem;  /* Further reduced font size */
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            background-color: rgba(255, 255, 255, 0.25);
-        }
-        
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-        
-        .contact-icon {
-            margin-right: 6px;  /* Reduced margin */
-        }
-        
-        .contact-icon svg {
-            width: 14px;  /* Reduced size */
-            height: 14px;  /* Reduced size */
-            fill: currentColor;
-        }
-        
-        /* Sidebar - Skills */
-        .sidebar {
-            background-color: var(--light);
-            padding: 25px 20px;
-            box-shadow: inset -5px 0 15px -5px var(--shadow);
-        }
-        
-        .sidebar h2 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        /* Modern Skills Display - COMPACT VERSION */
-        .skills-container {
-            margin-bottom: 18px; /* Reduced margin */
-        }
-        
-        .skills-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px; /* Reduced margin */
-            background-color: var(--primary);
-            color: white;
-            padding: 8px 12px; /* Reduced padding */
-            border-radius: 6px; /* Smaller border radius */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smaller shadow */
-        }
-        
-        .skills-icon {
-            background-color: var(--white);
-            color: var(--primary);
-            width: 24px; /* Smaller icon container */
-            height: 24px; /* Smaller icon container */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px; /* Reduced margin */
-        }
-        
-        .skills-icon svg {
-            width: 14px; /* Smaller icon */
-            height: 14px; /* Smaller icon */
-        }
-        
-        .skills-title {
-            font-weight: 600;
-            font-size: 1rem; /* Smaller title */
-            letter-spacing: 0.5px;
-        }
-        
-        /* Compact skill group styles */
-        .skill-group {
-            margin-bottom: 8px; /* Reduced space between groups */
-        }
-        
-        .skill-group:last-child {
-            margin-bottom: 0;
-        }
-        
-        .skill-group-header {
-            font-size: 0.7rem; /* Smaller header text */
-            color: #666;
-            margin-top: 6px; /* Reduced top margin */
-            margin-bottom: 3px; /* Reduced bottom margin */
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 2px;
-            font-weight: 600;
-        }
-        
-        .skill-group-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px; /* Tighter gap between items */
-        }
-        
-        /* Compact badge styles for all skill types */
-        .skill-badge-compact {
-            padding: 3px 8px; /* Smaller padding */
-            border-radius: 3px; /* Smaller border radius */
-            font-size: 0.75rem; /* Smaller font */
-            margin: 2px; /* Smaller margin */
-            display: inline-block;
-            color: white;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow */
-            transition: all 0.2s ease;
-        }
-        
-        .skill-badge-compact:hover {
-            transform: translateY(-2px) scale(1.03); /* Smaller hover effect */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Smaller hover shadow */
-        }
-        
-        /* Colors for different skill types */
-        .skill-leadership {
-            background: linear-gradient(135deg, #5c6bc0, #3949ab);
-        }
-        
-        .skill-resource {
-            background: linear-gradient(135deg, #43a047, #66bb6a);
-        }
-        
-        .skill-strategy {
-            background: linear-gradient(135deg, #fb8c00, #ffa726);
-        }
-        
-        .skill-client {
-            background: linear-gradient(135deg, #7e57c2, #9575cd);
-        }
-        
-        .skill-method {
-            background: linear-gradient(135deg, #26a69a, #4db6ac);
-        }
-        
-        .skill-collab {
-            background: linear-gradient(135deg, #ef5350, #f44336);
-        }
-        
-        .skill-personal {
-            background: linear-gradient(135deg, #29b6f6, #4fc3f7);
-        }
-        
-        .skill-tech-os {
-            background: linear-gradient(135deg, #455a64, #607d8b);
-        }
-        
-        .skill-tech-dev {
-            background: linear-gradient(135deg, #0277bd, #039be5);
-        }
-        
-        .skill-tech-devops {
-            background: linear-gradient(135deg, #00695c, #00897b);
-        }
-        
-        .skill-tech-infra {
-            background: linear-gradient(135deg, #f57c00, #ff9800);
-        }
-        
-        .skill-tech-ai {
-            background: linear-gradient(135deg, #7b1fa2, #9c27b0);
-        }
+        /* Skill Badge Colors */
+        .skill-leadership {background:linear-gradient(135deg,#5c6bc0,#3949ab);}
+        .skill-resource {background:linear-gradient(135deg,#43a047,#66bb6a);}
+        .skill-strategy {background:linear-gradient(135deg,#fb8c00,#ffa726);}
+        .skill-client {background:linear-gradient(135deg,#7e57c2,#9575cd);}
+        .skill-method {background:linear-gradient(135deg,#26a69a,#4db6ac);}
+        .skill-collab {background:linear-gradient(135deg,#ef5350,#f44336);}
+        .skill-personal {background:linear-gradient(135deg,#29b6f6,#4fc3f7);}
+        .skill-tech-os {background:linear-gradient(135deg,#455a64,#607d8b);}
+        .skill-tech-dev {background:linear-gradient(135deg,#0277bd,#039be5);}
+        .skill-tech-devops {background:linear-gradient(135deg,#00695c,#00897b);}
+        .skill-tech-infra {background:linear-gradient(135deg,#f57c00,#ff9800);}
+        .skill-tech-ai {background:linear-gradient(135deg,#7b1fa2,#9c27b0);}
         
         /* Main Content */
-        .main-content {
-            padding: 30px 40px;
-        }
+        .main-content {padding:30px 40px;}
+        .section {margin-bottom:40px;}
+        .section-title {color:var(--primary); font-size:1.6rem; margin-bottom:25px; position:relative; display:inline-block;}
+        .section-title::after {content:''; position:absolute; left:0; bottom:-5px; width:100%; height:3px; background-color:var(--primary); border-radius:2px;}
         
-        .section {
-            margin-bottom: 40px;
-        }
+        /* Timeline */
+        .timeline-item {margin-bottom:20px; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,.1); background-color:white;}
+        .timeline-header {background-color:var(--light); padding:15px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; border-left:4px solid var(--primary); position:relative;}
+        .timeline-header:hover {background-color:rgba(74,140,138,.1);}
+        .timeline-title-wrapper {flex:1;}
+        .timeline-title {font-weight:600; font-size:1.1rem; color:var(--dark); margin-bottom:5px;}
+        .timeline-subtitle {color:var(--accent); font-weight:500; display:inline-block; margin-right:15px;}
+        .timeline-date {background-color:var(--primary); color:white; padding:5px 10px; border-radius:20px; font-size:.8rem; font-weight:500; display:inline-flex; align-items:center;}
+        .timeline-summary {margin-top:5px; font-size:.9rem; color:var(--secondary);}
+        .timeline-dropdown-icon {margin-left:15px; transition:transform .3s ease;}
+        .timeline-dropdown-icon svg {width:20px; height:20px; fill:var(--primary);}
         
-        .section-title {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
+        /* Timeline Content */
+        .timeline-content {padding:0; max-height:0; overflow:hidden; transition:max-height .5s ease,padding .3s ease;}
+        .timeline-content-inner {padding:0 20px;}
+        .timeline-content.active {max-height:1000px; padding:20px;}
+        .timeline-header.active .timeline-dropdown-icon {transform:rotate(180deg);}
         
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
+        /* Badges */
+        .badge {display:inline-block; background-color:var(--accent); color:white; padding:5px 10px; border-radius:20px; font-size:.8rem; margin-top:10px; margin-right:10px; box-shadow:0 2px 4px rgba(0,0,0,.1);}
+        .badge-container {display:flex; flex-wrap:wrap; gap:8px; margin-top:15px;}
+        .badge-financial, .badge-team, .badge-career, .badge-education, .badge-major {color:white; padding:5px 10px; border-radius:20px; font-size:.8rem; font-weight:500; box-shadow:0 3px 6px rgba(0,0,0,.15); display:inline-flex; align-items:center;}
+        .badge-financial {background:linear-gradient(135deg,#2e7d32,#4caf50);}
+        .badge-team {background:linear-gradient(135deg,#1565c0,#42a5f5);}
+        .badge-career {background:linear-gradient(135deg,#c62828,#ef5350);}
+        .badge-education {background:linear-gradient(135deg,#7b1fa2,#9c27b0);}
+        .badge-major {background:linear-gradient(135deg,#ff8f00,#ffb300);}
+        .badge-inline {margin-top:10px; margin-right:8px; display:inline-flex;}
         
-        .timeline-item {
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            background-color: white;
-        }
+        /* Interests */
+        .interests {display:flex; flex-wrap:wrap; gap:15px;}
+        .interest-item {background:var(--white); border:2px solid var(--primary); color:var(--primary); padding:12px 15px; border-radius:8px; font-weight:500; display:flex; align-items:center; transition:all .3s ease; box-shadow:0 4px 6px rgba(0,0,0,.05);}
+        .interest-item:hover {background:var(--primary); color:white; transform:translateY(-5px) rotate(2deg); box-shadow:0 8px 15px rgba(0,0,0,.1);}
+        .interest-icon {font-size:1.3rem; margin-right:8px;}
         
-        .timeline-header {
-            background-color: var(--light);
-            padding: 15px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 4px solid var(--primary);
-            position: relative;
-        }
+        /* Bullet Lists */
+        .bullet-list {list-style:none; padding-left:0; margin-bottom:15px;}
+        .bullet-list li {position:relative; padding-left:28px; margin-bottom:12px; line-height:1.5;}
+        .bullet-list li:before {content:''; position:absolute; left:0; top:6px; width:8px; height:8px; background-color:var(--primary); border-radius:50%; box-shadow:0 2px 4px rgba(0,0,0,.1); transition:all .2s ease;}
+        .bullet-list li:hover:before {transform:scale(1.5); background-color:var(--accent);}
+        .bullet-list li:last-child {margin-bottom:0;}
         
-        .timeline-header:hover {
-            background-color: rgba(74, 140, 138, 0.1);
-        }
-        
-        .timeline-title-wrapper {
-            flex: 1;
-        }
-        
-        .timeline-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin-bottom: 5px;
-        }
-        
-        .timeline-subtitle {
-            color: var(--accent);
-            font-weight: 500;
-            display: inline-block;
-            margin-right: 15px;
-        }
-        
-        .timeline-date {
-            background-color: var(--primary);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .timeline-summary {
-            margin-top: 5px;
-            font-size: 0.9rem;
-            color: var(--secondary);
-        }
-        
-        .timeline-dropdown-icon {
-            margin-left: 15px;
-            transition: transform 0.3s ease;
-        }
-        
-        .timeline-dropdown-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--primary);
-        }
-        
-        .timeline-content {
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.3s ease;
-        }
-        
-        .timeline-content-inner {
-            padding: 0 20px;
-        }
-        
-        .timeline-content.active {
-            max-height: 1000px;
-            padding: 20px;
-        }
-        
-        .timeline-header.active .timeline-dropdown-icon {
-            transform: rotate(180deg);
-        }
-        
-        .badge {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            margin-right: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-        
-        .badge-financial {
-            background: linear-gradient(135deg, #2e7d32, #4caf50);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .badge-team {
-            background: linear-gradient(135deg, #1565c0, #42a5f5);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .badge-career {
-            background: linear-gradient(135deg, #c62828, #ef5350);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .badge-education {
-            background: linear-gradient(135deg, #7b1fa2, #9c27b0);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .interest-item {
-            background: var(--white);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 12px 15px;
-            border-radius: 8px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .interest-item:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px) rotate(2deg);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .interest-icon {
-            font-size: 1.3rem;
-            margin-right: 8px;
-        }
-        
-        /* Nouvelles styles pour les listes à puces */
-        .bullet-list {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 15px;
-        }
-        
-        .bullet-list li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-        
-        .bullet-list li:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s ease;
-        }
-        
-        .bullet-list li:hover:before {
-            transform: scale(1.5);
-            background-color: var(--accent);
-        }
-        
-        .bullet-list li:last-child {
-            margin-bottom: 0;
-        }
+        /* Education special styles */
+        .education-header {padding:20px; cursor:default;}
+        .education-header:hover {background-color:var(--light);}
         
         /* Responsive */
-        @media screen and (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-                width: 95%;
-            }
-            
-            .header-content {
-                flex-direction: column;
-            }
-            
-            .profile-info {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-            
-            .timeline-header {
-                flex-wrap: wrap;
-            }
-            
-            .timeline-date {
-                margin-top: 10px;
-            }
-            
-            .badge-container {
-                flex-direction: column;
-                gap: 8px;
-            }
+        @media screen and (max-width:900px) {
+            .container {grid-template-columns:1fr; width:95%;}
+            .header-content {flex-direction:column;}
+            .profile-info {max-width:100%; margin-bottom:20px;}
+            .timeline-header {flex-wrap:wrap;}
+            .timeline-date {margin-top:10px;}
+            .badge-container {flex-direction:column; gap:8px;}
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- HEADER SECTION -->
+        <!-- Header -->
         <header>
             <div class="header-content">
                 <div class="profile-info">
-                    <div class="profile-name">
-                        <h1>Alan DAMOTTE</h1>
-                    </div>
+                    <div class="profile-name"><h1>Alan DAMOTTE</h1></div>
                     <div class="profile-title">TEAM MANAGER – DIRECTEUR DE PROJET</div>
-                    <div class="profile-intro">
-                        Team manager ayant fait ses preuves dans le pilotage de projets complexes et stratégiques. Je suis expérimenté dans le management d'équipe comptant jusqu'à 20 ingénieurs et en collaboration avec des équipes cross-fonctionnelles. J'aime continuer à me développer, tant sur le plan professionnel que personnel, pour atteindre de nouveaux objectifs, et m'engage dans une quête constante d'amélioration continue pour stimuler l'innovation.
-                    </div>
+                    <div class="profile-intro">Team manager ayant fait ses preuves dans le pilotage de projets complexes et stratégiques. Je suis expérimenté dans le management d'équipe comptant jusqu'à 20 ingénieurs et en collaboration avec des équipes cross-fonctionnelles. J'aime continuer à me développer, tant sur le plan professionnel que personnel, pour atteindre de nouveaux objectifs, et m'engage dans une quête constante d'amélioration continue pour stimuler l'innovation.</div>
                 </div>
             </div>
-            
             <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
-                        </svg>
-                    </div>
-                    <div>21 Rue du regard doux, 38230 Tignieu-Jameyzieu</div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
-                        </svg>
-                    </div>
-                    <div>06.33.70.80.29</div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
-                        </svg>
-                    </div>
-                    <div><a href="mailto:Alan.damotte@gmail.com">Alan.damotte@gmail.com</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" />
-                        </svg>
-                    </div>
-                    <div>Anglais - Professionnel - Parlé et écrit (TOEIC 920)</div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
-                        </svg>
-                    </div>
-                    <div>31 ans - Permis B</div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z" />
-                        </svg>
-                    </div>
-                    <div><a href="https://www.linkedin.com/in/alandamotte/" target="_blank">linkedin.com/in/alandamotte</a></div>
-                </div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg></div><div>21 Rue du regard doux, 38230 Tignieu-Jameyzieu</div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" /></svg></div><div>06.33.70.80.29</div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg></div><div><a href="mailto:Alan.damotte@gmail.com">Alan.damotte@gmail.com</a></div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" /></svg></div><div>Anglais - Professionnel - Parlé et écrit (TOEIC 920)</div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg></div><div>31 ans - Permis B</div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z" /></svg></div><div><a href="https://www.linkedin.com/in/alandamotte/" target="_blank">linkedin.com/in/alandamotte</a></div></div>
             </div>
         </header>
         
-        <!-- SIDEBAR - SKILLS -->
+        <!-- Sidebar -->
         <div class="sidebar">
             <h2>COMPÉTENCES</h2>
             
             <!-- Management Skills -->
             <div class="skills-container">
                 <div class="skills-header">
-                    <div class="skills-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" />
-                        </svg>
-                    </div>
+                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg></div>
                     <div class="skills-title">Management</div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Leadership et gestion des ressources humaines</div>
                     <div class="skill-group-content">
@@ -670,7 +182,6 @@
                         <span class="skill-badge-compact skill-leadership">Définition objectifs</span>
                     </div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Gestion stratégique</div>
                     <div class="skill-group-content">
@@ -683,14 +194,9 @@
             <!-- Project Management Skills -->
             <div class="skills-container">
                 <div class="skills-header">
-                    <div class="skills-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" />
-                        </svg>
-                    </div>
+                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" /></svg></div>
                     <div class="skills-title">Gestion de projet</div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Planification et ressources</div>
                     <div class="skill-group-content">
@@ -698,7 +204,6 @@
                         <span class="skill-badge-compact skill-resource">Planification</span>
                     </div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Relations clients</div>
                     <div class="skill-group-content">
@@ -706,7 +211,6 @@
                         <span class="skill-badge-compact skill-client">Avant-ventes</span>
                     </div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Méthodologie et suivi</div>
                     <div class="skill-group-content">
@@ -720,14 +224,9 @@
             <!-- Technical Skills -->
             <div class="skills-container">
                 <div class="skills-header">
-                    <div class="skills-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" />
-                        </svg>
-                    </div>
+                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg></div>
                     <div class="skills-title">Technologies</div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Langages & Frameworks</div>
                     <div class="skill-group-content">
@@ -737,7 +236,6 @@
                         <span class="skill-badge-compact skill-tech-dev">MySQL</span>
                     </div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Outils DevOps</div>
                     <div class="skill-group-content">
@@ -747,7 +245,6 @@
                         <span class="skill-badge-compact skill-tech-devops">Jira</span>
                     </div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Infrastructure</div>
                     <div class="skill-group-content">
@@ -756,14 +253,12 @@
                         <span class="skill-badge-compact skill-tech-infra">NGINX</span>
                     </div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Intelligence Artificielle</div>
                     <div class="skill-group-content">
                         <span class="skill-badge-compact skill-tech-ai">GenAI/LLM/Agents</span>
                     </div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Systèmes d'exploitation</div>
                     <div class="skill-group-content">
@@ -776,14 +271,9 @@
             <!-- Personal Skills -->
             <div class="skills-container">
                 <div class="skills-header">
-                    <div class="skills-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" />
-                        </svg>
-                    </div>
+                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" /></svg></div>
                     <div class="skills-title">Qualités personnelles</div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Compétences collaboratives</div>
                     <div class="skill-group-content">
@@ -791,7 +281,6 @@
                         <span class="skill-badge-compact skill-collab">Communication</span>
                     </div>
                 </div>
-                
                 <div class="skill-group">
                     <div class="skill-group-header">Compétences individuelles</div>
                     <div class="skill-group-content">
@@ -803,12 +292,11 @@
             </div>
         </div>
         
-        <!-- MAIN CONTENT -->
+        <!-- Main Content -->
         <div class="main-content">
-            <!-- EXPERIENCE SECTION -->
+            <!-- Experience Section -->
             <div class="section">
                 <h2 class="section-title">EXPÉRIENCE PROFESSIONNELLE</h2>
-                
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-header active">
@@ -820,11 +308,7 @@
                                 </div>
                                 <div class="timeline-summary">Direction d'une équipe de 20 collaborateurs et gestion de projet SaaS pour 25 clients internationaux.</div>
                             </div>
-                            <div class="timeline-dropdown-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                                </svg>
-                            </div>
+                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
                         </div>
                         <div class="timeline-content active">
                             <div class="timeline-content-inner">
@@ -835,26 +319,10 @@
                                     <li>Conduite de projet de migration Cloud (Google Cloud Platform) – Démarche SRE – Amélioration continue – Conduite du changement et transition DevOps / FinOps</li>
                                     <li>Référent du département sur l'utilisation de l'IA au sein des produits et des équipes - Pilotage de la mise en place d'un agent IA dédié à l'équipe projet</li>
                                 </ul>
-                                
                                 <div class="badge-container">
-                                    <span class="badge-financial">
-                                        <svg style="width: 16px; height: 16px; margin-right: 6px; fill: white;" viewBox="0 0 24 24">
-                                            <path d="M11.8,10.9c-2.27-0.59-3-1.2-3-2.15c0-1.09,1.01-1.85,2.7-1.85c1.78,0,2.44,0.85,2.5,2.1h2.21 c-0.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94,0.42-3.5,1.68-3.5,3.61c0,2.31,1.91,3.46,4.7,4.13c2.5,0.6,3,1.48,3,2.41 c0,0.69-0.49,1.79-2.7,1.79c-2.06,0-2.87-0.92-2.98-2.1H6.32c0.12,2.19,1.76,3.42,3.68,3.83V21h3v-2.15 c1.95-0.37,3.5-1.5,3.5-3.55C16.5,12.46,14.07,11.49,11.8,10.9z"></path>
-                                        </svg>
-                                        CA: 3M€ • Marge: +20% en 2 ans
-                                    </span>
-                                    <span class="badge-team">
-                                        <svg style="width: 16px; height: 16px; margin-right: 6px; fill: white;" viewBox="0 0 24 24">
-                                            <path d="M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.55,12H13V7H16V10.43C16.37,10.16 16.81,10 17.25,10C18.5,10 19.5,11 19.5,12.25C19.5,13.5 18.5,14.5 17.25,14.5C17,14.5 16.75,14.43 16.5,14.32V14.5H13.5V12.5H15.5V12.72C15.76,12.89 16,13 16.25,13C17.07,13 17.75,12.32 17.75,11.5C17.75,10.68 17.07,10 16.25,10H16.25L17,10M11,19.5V18H9V11A2,2 0 0,0 7,9H5V18H3V7H7A4,4 0 0,1 11,11V18H9V19.5H11Z"></path>
-                                        </svg>
-                                        Satisfaction d'équipe: +10% en 2 ans
-                                    </span>
-                                    <span class="badge-career">
-                                        <svg style="width: 16px; height: 16px; margin-right: 6px; fill: white;" viewBox="0 0 24 24">
-                                            <path d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"></path>
-                                        </svg>
-                                        Identifié parmi les Talents Worldline 2022, 2023 et 2024
-                                    </span>
+                                    <span class="badge-financial"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M11.8,10.9c-2.27-0.59-3-1.2-3-2.15c0-1.09,1.01-1.85,2.7-1.85c1.78,0,2.44,0.85,2.5,2.1h2.21 c-0.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94,0.42-3.5,1.68-3.5,3.61c0,2.31,1.91,3.46,4.7,4.13c2.5,0.6,3,1.48,3,2.41 c0,0.69-0.49,1.79-2.7,1.79c-2.06,0-2.87-0.92-2.98-2.1H6.32c0.12,2.19,1.76,3.42,3.68,3.83V21h3v-2.15 c1.95-0.37,3.5-1.5,3.5-3.55C16.5,12.46,14.07,11.49,11.8,10.9z"></path></svg>CA: 3M€ • Marge: +20% en 2 ans</span>
+                                    <span class="badge-team"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.55,12H13V7H16V10.43C16.37,10.16 16.81,10 17.25,10C18.5,10 19.5,11 19.5,12.25C19.5,13.5 18.5,14.5 17.25,14.5C17,14.5 16.75,14.43 16.5,14.32V14.5H13.5V12.5H15.5V12.72C15.76,12.89 16,13 16.25,13C17.07,13 17.75,12.32 17.75,11.5C17.75,10.68 17.07,10 16.25,10H16.25L17,10M11,19.5V18H9V11A2,2 0 0,0 7,9H5V18H3V7H7A4,4 0 0,1 11,11V18H9V19.5H11Z"></path></svg>Satisfaction d'équipe: +10% en 2 ans</span>
+                                    <span class="badge-career"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"></path></svg>Identifié parmi les Talents Worldline 2022, 2023 et 2024</span>
                                 </div>
                             </div>
                         </div>
@@ -870,11 +338,7 @@
                                 </div>
                                 <div class="timeline-summary">Gestion de projet et relation client pour un portefeuille de 10 clients internationaux.</div>
                             </div>
-                            <div class="timeline-dropdown-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                                </svg>
-                            </div>
+                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
                         </div>
                         <div class="timeline-content">
                             <div class="timeline-content-inner">
@@ -898,11 +362,7 @@
                                 </div>
                                 <div class="timeline-summary">Gestion d'un service de paiement en ligne pour 4 grandes fédérations françaises.</div>
                             </div>
-                            <div class="timeline-dropdown-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                                </svg>
-                            </div>
+                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
                         </div>
                         <div class="timeline-content">
                             <div class="timeline-content-inner">
@@ -925,11 +385,7 @@
                                 </div>
                                 <div class="timeline-summary">Conception et développement d'un service de location de vélos en libre-service.</div>
                             </div>
-                            <div class="timeline-dropdown-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                                </svg>
-                            </div>
+                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
                         </div>
                         <div class="timeline-content">
                             <div class="timeline-content-inner">
@@ -944,12 +400,11 @@
                 </div>
             </div>
             
-            <!-- FORMATION SECTION -->
+            <!-- Formation Section -->
             <div class="section">
                 <h2 class="section-title">FORMATION ET DIPLÔME</h2>
-                
                 <div class="timeline-item">
-                    <div class="timeline-header">
+                    <div class="timeline-header education-header">
                         <div class="timeline-title-wrapper">
                             <div class="timeline-title">DIPLÔME D'INGÉNIEUR INFORMATIQUE</div>
                             <div>
@@ -957,82 +412,31 @@
                                 <span class="timeline-date">2016</span>
                             </div>
                             <div class="timeline-summary">Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</div>
-                        </div>
-                        <div class="timeline-dropdown-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-content-inner">
-                            <div class="badge-container">
-                                <span class="badge-education">
-                                    <svg style="width: 16px; height: 16px; margin-right: 6px; fill: white;" viewBox="0 0 24 24">
-                                        <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
-                                    </svg>
-                                    Mention Bien
-                                </span>
-                                <span class="badge-education">
-                                    <svg style="width: 16px; height: 16px; margin-right: 6px; fill: white;" viewBox="0 0 24 24">
-                                        <path d="M20,2H4V4L12,12L20,4V2M4,6V20H20V6L12,14L4,6Z" />
-                                    </svg>
-                                    Major de promotion 2016
-                                </span>
+                            <div style="margin-top: 10px;">
+                                <span class="badge-education badge-inline"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>Mention Bien</span>
+                                <span class="badge-major badge-inline"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M20,2H4V4L12,12L20,4V2M4,6V20H20V6L12,14L4,6Z" /></svg>Major de promotion 2016</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- INTERESTS SECTION -->
+            <!-- Interests Section -->
             <div class="section">
                 <h2 class="section-title">CENTRES D'INTÉRÊTS</h2>
-                
                 <div class="interests">
-                    <div class="interest-item">
-                        <div class="interest-icon">🏃‍♂️</div>
-                        <div>Sport</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-icon">🌱</div>
-                        <div>Jardinage</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-icon">💻</div>
-                        <div>High-Tech</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-icon">🎮</div>
-                        <div>Jeux-Vidéos</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-icon">🎨</div>
-                        <div>Infographie</div>
-                    </div>
+                    <div class="interest-item"><div class="interest-icon">🏃‍♂️</div><div>Sport</div></div>
+                    <div class="interest-item"><div class="interest-icon">🌱</div><div>Jardinage</div></div>
+                    <div class="interest-item"><div class="interest-icon">💻</div><div>High-Tech</div></div>
+                    <div class="interest-item"><div class="interest-icon">🎮</div><div>Jeux-Vidéos</div></div>
+                    <div class="interest-item"><div class="interest-icon">🎨</div><div>Infographie</div></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Handle dropdown functionality
-            const timelineHeaders = document.querySelectorAll('.timeline-header');
-            
-            timelineHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    // Toggle active class on header
-                    this.classList.toggle('active');
-                    
-                    // Get the content element
-                    const content = this.nextElementSibling;
-                    
-                    // Toggle active class on content
-                    content.classList.toggle('active');
-                });
-            });
-        });
+        document.addEventListener('DOMContentLoaded',function(){const e=document.querySelectorAll('.timeline-header:not(.education-header)');e.forEach(e=>{e.addEventListener('click',function(){this.classList.toggle('active');const e=this.nextElementSibling;e.classList.toggle('active');});});});
     </script>
 </body>
 </html>
