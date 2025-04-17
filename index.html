@@ -445,16 +445,12 @@
         }
         
         .timeline-content-inner {
-            padding: 20px;
-        }
-        
-        .timeline-content p {
-            margin-bottom: 8px;
+            padding: 0 20px;
         }
         
         .timeline-content.active {
-            padding: 20px;
             max-height: 1000px;
+            padding: 20px;
         }
         
         .timeline-header.active .timeline-dropdown-icon {
@@ -555,6 +551,42 @@
             border-bottom: 1px dashed #ccc;
             padding-bottom: 2px;
             font-weight: 600;
+        }
+        
+        /* Nouvelles styles pour les listes à puces */
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+        
+        .bullet-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .bullet-list li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .bullet-list li:hover:before {
+            transform: scale(1.5);
+            background-color: var(--accent);
+        }
+        
+        .bullet-list li:last-child {
+            margin-bottom: 0;
         }
         
         /* Responsive */
@@ -794,11 +826,13 @@
                         </div>
                         <div class="timeline-content active">
                             <div class="timeline-content-inner">
-                                <p>• Direction de projet sur des enjeux de mise en conformité PSD2 (Produit fourni en mode SaaS) – Build & Run pour 25 clients internationaux</p>
-                                <p>• Gestion du budget et des ressources – Avant-vente – Définition de la stratégie technico-fonctionnelle du produit – Suivi de l'évolution de la réglementation (dont PSD3 / PSR1 / Instant Payment - Verification of Payee)</p>
-                                <p>• Management opérationnel et hiérarchique d'une équipe de 20 collaborateurs – Recrutement – Plan de formation – Entretiens de performances et suivi de carrière – People review / Salary review – Coaching</p>
-                                <p>• Conduite de projet de migration Cloud (Google Cloud Platform) – Démarche SRE – Amélioration continue – Conduite du changement et transition DevOps / FinOps</p>
-                                <p>• Référent du département sur l'utilisation de l'IA au sein des produits et des équipes - Pilotage de la mise en place d'un agent IA dédié à l'équipe projet</p>
+                                <ul class="bullet-list">
+                                    <li>Direction de projet sur des enjeux de mise en conformité PSD2 (Produit fourni en mode SaaS) – Build & Run pour 25 clients internationaux</li>
+                                    <li>Gestion du budget et des ressources – Avant-vente – Définition de la stratégie technico-fonctionnelle du produit – Suivi de l'évolution de la réglementation (dont PSD3 / PSR1 / Instant Payment - Verification of Payee)</li>
+                                    <li>Management opérationnel et hiérarchique d'une équipe de 20 collaborateurs – Recrutement – Plan de formation – Entretiens de performances et suivi de carrière – People review / Salary review – Coaching</li>
+                                    <li>Conduite de projet de migration Cloud (Google Cloud Platform) – Démarche SRE – Amélioration continue – Conduite du changement et transition DevOps / FinOps</li>
+                                    <li>Référent du département sur l'utilisation de l'IA au sein des produits et des équipes - Pilotage de la mise en place d'un agent IA dédié à l'équipe projet</li>
+                                </ul>
                                 
                                 <div class="badge-container">
                                     <span class="badge-financial">
@@ -842,10 +876,12 @@
                         </div>
                         <div class="timeline-content">
                             <div class="timeline-content-inner">
-                                <p>• Gestion de projet - Relation client et pilotage d'un portefeuille de 10 clients internationaux</p>
-                                <p>• Suivi des déploiements, des lots de développements spécifiques et de la recette – Participation aux enjeux d'exploitation de la solution et support de recette et production</p>
-                                <p>• Pilotage de l'industrialisation et de l'amélioration des processus d'exploitation</p>
-                                <p>• Implication dans la stratégie produit</p>
+                                <ul class="bullet-list">
+                                    <li>Gestion de projet - Relation client et pilotage d'un portefeuille de 10 clients internationaux</li>
+                                    <li>Suivi des déploiements, des lots de développements spécifiques et de la recette – Participation aux enjeux d'exploitation de la solution et support de recette et production</li>
+                                    <li>Pilotage de l'industrialisation et de l'amélioration des processus d'exploitation</li>
+                                    <li>Implication dans la stratégie produit</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -868,9 +904,11 @@
                         </div>
                         <div class="timeline-content">
                             <div class="timeline-content-inner">
-                                <p>• Service de gestion des ordres de paiement en ligne pour le compte de 4 grandes fédérations françaises</p>
-                                <p>• Gestion de projet, suivi des demandes d'évolutions du service, gestion des partenaires, suivi de production du service</p>
-                                <p>• Encadrement d'une équipe de développeurs pour les phases d'évolution et d'exploitation du service, organisation des comités de projet hebdomadaires</p>
+                                <ul class="bullet-list">
+                                    <li>Service de gestion des ordres de paiement en ligne pour le compte de 4 grandes fédérations françaises</li>
+                                    <li>Gestion de projet, suivi des demandes d'évolutions du service, gestion des partenaires, suivi de production du service</li>
+                                    <li>Encadrement d'une équipe de développeurs pour les phases d'évolution et d'exploitation du service, organisation des comités de projet hebdomadaires</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -893,9 +931,11 @@
                         </div>
                         <div class="timeline-content">
                             <div class="timeline-content-inner">
-                                <p>• Service de gestion de location de vélos en libre-service</p>
-                                <p>• Conception, rédaction de spécifications fonctionnelles et techniques, développements logiciels</p>
-                                <p>• Elaboration de propositions commerciales, relation client et exploitation de la solution</p>
+                                <ul class="bullet-list">
+                                    <li>Service de gestion de location de vélos en libre-service</li>
+                                    <li>Conception, rédaction de spécifications fonctionnelles et techniques, développements logiciels</li>
+                                    <li>Elaboration de propositions commerciales, relation client et exploitation de la solution</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -924,9 +964,11 @@
                     </div>
                     <div class="timeline-content">
                         <div class="timeline-content-inner">
-                            <p>• Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</p>
-                            <p>• Mention Bien</p>
-                            <p>• Major de promotion 2016</p>
+                            <ul class="bullet-list">
+                                <li>Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</li>
+                                <li>Mention Bien</li>
+                                <li>Major de promotion 2016</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -976,11 +1018,7 @@
                     const content = this.nextElementSibling;
                     
                     // Toggle active class on content
-                    if (content.classList.contains('active')) {
-                        content.classList.remove('active');
-                    } else {
-                        content.classList.add('active');
-                    }
+                    content.classList.toggle('active');
                 });
             });
         });
