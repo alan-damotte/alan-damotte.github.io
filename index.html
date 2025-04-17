@@ -467,6 +467,30 @@
             align-items: center;
         }
         
+        .badge-academic {
+            background: linear-gradient(135deg, #9c27b0, #ba68c8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .badge-distinction {
+            background: linear-gradient(135deg, #f9a825, #ffd54f);
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+        }
+        
         .interests {
             display: flex;
             flex-wrap: wrap;
@@ -649,25 +673,19 @@
                 </div>
                 
                 <div class="skill-group">
-                    <div class="skill-group-header">Leadership et encadrement</div>
+                    <div class="skill-group-header">Leadership et gestion des ressources humaines</div>
                     <div class="skill-group-content">
                         <span class="skill-badge-compact skill-leadership">Leadership</span>
                         <span class="skill-badge-compact skill-leadership">Coaching</span>
-                    </div>
-                </div>
-                
-                <div class="skill-group">
-                    <div class="skill-group-header">Gestion des ressources humaines</div>
-                    <div class="skill-group-content">
                         <span class="skill-badge-compact skill-resource">Suivi collaborateurs</span>
                         <span class="skill-badge-compact skill-resource">People review</span>
+                        <span class="skill-badge-compact skill-resource">Définition objectifs</span>
                     </div>
                 </div>
                 
                 <div class="skill-group">
                     <div class="skill-group-header">Gestion stratégique</div>
                     <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-strategy">Définition objectifs</span>
                         <span class="skill-badge-compact skill-strategy">Revue budgétaire</span>
                         <span class="skill-badge-compact skill-strategy">Gestion ressources</span>
                     </div>
@@ -950,7 +968,7 @@
                                 <span class="timeline-subtitle">POLYTECH GRENOBLE</span>
                                 <span class="timeline-date">2016</span>
                             </div>
-                            <div class="timeline-summary">Major de promotion avec mention Bien - Filière RICM</div>
+                            <div class="timeline-summary">Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</div>
                         </div>
                         <div class="timeline-dropdown-icon">
                             <svg viewBox="0 0 24 24">
@@ -962,9 +980,22 @@
                         <div class="timeline-content-inner">
                             <ul class="bullet-list">
                                 <li>Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</li>
-                                <li>Mention Bien</li>
-                                <li>Major de promotion 2016</li>
                             </ul>
+                            
+                            <div class="badge-container">
+                                <span class="badge-academic">
+                                    <svg style="width: 16px; height: 16px; margin-right: 6px; fill: white;" viewBox="0 0 24 24">
+                                        <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+                                    </svg>
+                                    Mention Bien
+                                </span>
+                                <span class="badge-distinction">
+                                    <svg style="width: 16px; height: 16px; margin-right: 6px; fill: #333;" viewBox="0 0 24 24">
+                                        <path d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z" />
+                                    </svg>
+                                    Major de promotion 2016
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
