@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alan DAMOTTE</title>
+    <title>CV Alan DAMOTTE</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -52,7 +52,7 @@
             grid-column: 1 / -1;
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             color: white;
-            padding: 40px;
+            padding: 25px 40px;  /* Reduced padding */
             position: relative;
             overflow: hidden;
         }
@@ -83,16 +83,16 @@
         }
         
         .profile-name h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;  /* Slightly reduced font size */
             font-weight: 700;
             margin-bottom: 5px;
             letter-spacing: -0.5px;
         }
         
         .profile-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;  /* Slightly reduced font size */
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 10px;  /* Reduced margin */
             opacity: 0.9;
             letter-spacing: 1px;
         }
@@ -101,25 +101,27 @@
             font-weight: 300;
             line-height: 1.5;
             max-width: 600px;
+            font-size: 0.95rem;  /* Slightly reduced font size */
         }
         
         .contact-info {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;  /* Reduced gap */
+            margin-top: 15px;  /* Reduced margin */
         }
         
         .contact-item {
             display: flex;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.15);
-            padding: 8px 12px;
+            padding: 6px 10px;  /* Reduced padding */
             border-radius: 30px;
             backdrop-filter: blur(5px);
-            margin-right: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-right: 8px;  /* Reduced margin */
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 0.9rem;  /* Reduced font size */
         }
         
         .contact-item:hover {
@@ -165,26 +167,24 @@
         /* Modern Skills Display */
         .skills-container {
             margin-bottom: 25px;
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
         }
         
         .skills-header {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            margin-bottom: 15px;
+            background-color: var(--primary);
             color: white;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
         
         .skills-icon {
-            background-color: rgba(255, 255, 255, 0.2);
-            width: 32px;
-            height: 32px;
+            background-color: var(--white);
+            color: var(--primary);
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -195,7 +195,6 @@
         .skills-icon svg {
             width: 18px;
             height: 18px;
-            fill: white;
         }
         
         .skills-title {
@@ -204,15 +203,12 @@
             letter-spacing: 0.5px;
         }
         
-        .skills-content {
-            padding: 15px;
-            background-color: white;
-        }
-        
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 15px;
+            padding: 0 5px;
         }
         
         .skill-badge {
@@ -540,16 +536,14 @@
                     </div>
                     <div class="skills-title">Management</div>
                 </div>
-                <div class="skills-content">
-                    <div class="skills-grid">
-                        <div class="skill-badge">Leadership</div>
-                        <div class="skill-badge">Suivi collaborateurs</div>
-                        <div class="skill-badge">Définition objectifs</div>
-                        <div class="skill-badge">Revue budgétaire</div>
-                        <div class="skill-badge">Gestion ressources</div>
-                        <div class="skill-badge">People review</div>
-                        <div class="skill-badge">Coaching</div>
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-badge">Leadership</div>
+                    <div class="skill-badge">Suivi collaborateurs</div>
+                    <div class="skill-badge">Définition objectifs</div>
+                    <div class="skill-badge">Revue budgétaire</div>
+                    <div class="skill-badge">Gestion ressources</div>
+                    <div class="skill-badge">People review</div>
+                    <div class="skill-badge">Coaching</div>
                 </div>
             </div>
             
@@ -563,16 +557,14 @@
                     </div>
                     <div class="skills-title">Gestion de projet</div>
                 </div>
-                <div class="skills-content">
-                    <div class="skills-grid">
-                        <div class="skill-badge">Pilotage ressources</div>
-                        <div class="skill-badge">Relation client</div>
-                        <div class="skill-badge">Analyse technique</div>
-                        <div class="skill-badge">Planification</div>
-                        <div class="skill-badge">Méthodes Agiles</div>
-                        <div class="skill-badge">Avant-ventes</div>
-                        <div class="skill-badge">Suivi budgétaire</div>
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-badge">Pilotage ressources</div>
+                    <div class="skill-badge">Relation client</div>
+                    <div class="skill-badge">Analyse technique</div>
+                    <div class="skill-badge">Planification</div>
+                    <div class="skill-badge">Méthodes Agiles</div>
+                    <div class="skill-badge">Avant-ventes</div>
+                    <div class="skill-badge">Suivi budgétaire</div>
                 </div>
             </div>
             
@@ -586,21 +578,19 @@
                     </div>
                     <div class="skills-title">Technologies</div>
                 </div>
-                <div class="skills-content">
-                    <div style="display: flex; flex-wrap: wrap;">
-                        <div class="skill-tech">Windows/Unix</div>
-                        <div class="skill-tech">REST APIs</div>
-                        <div class="skill-tech">Java/Spring</div>
-                        <div class="skill-tech">CI/CD</div>
-                        <div class="skill-tech">Git/Gitlab</div>
-                        <div class="skill-tech">Docker</div>
-                        <div class="skill-tech">Openshift</div>
-                        <div class="skill-tech">Cloud GCP</div>
-                        <div class="skill-tech">EmberJs</div>
-                        <div class="skill-tech">Elastic</div>
-                        <div class="skill-tech">MySQL</div>
-                        <div class="skill-tech">JIRA</div>
-                    </div>
+                <div class="skills-grid" style="display: flex; flex-wrap: wrap;">
+                    <div class="skill-tech">Windows/Unix</div>
+                    <div class="skill-tech">REST APIs</div>
+                    <div class="skill-tech">Java/Spring</div>
+                    <div class="skill-tech">CI/CD</div>
+                    <div class="skill-tech">Git/Gitlab</div>
+                    <div class="skill-tech">Docker</div>
+                    <div class="skill-tech">Openshift</div>
+                    <div class="skill-tech">Cloud GCP</div>
+                    <div class="skill-tech">EmberJs</div>
+                    <div class="skill-tech">Elastic</div>
+                    <div class="skill-tech">MySQL</div>
+                    <div class="skill-tech">JIRA</div>
                 </div>
             </div>
             
@@ -614,14 +604,12 @@
                     </div>
                     <div class="skills-title">Qualités personnelles</div>
                 </div>
-                <div class="skills-content">
-                    <div class="skills-grid">
-                        <div class="skill-badge">Esprit d'équipe</div>
-                        <div class="skill-badge">Organisation</div>
-                        <div class="skill-badge">Communication</div>
-                        <div class="skill-badge">Esprit d'analyse</div>
-                        <div class="skill-badge">Adaptabilité</div>
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-badge">Esprit d'équipe</div>
+                    <div class="skill-badge">Organisation</div>
+                    <div class="skill-badge">Communication</div>
+                    <div class="skill-badge">Esprit d'analyse</div>
+                    <div class="skill-badge">Adaptabilité</div>
                 </div>
             </div>
         </div>
