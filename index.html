@@ -226,66 +226,129 @@
             .profile-intro {max-height:0;}
             .profile-intro.active {max-height:500px;}
             
-            /* Compact Skills Section */
-            .sidebar {padding:15px 10px;}
-            .sidebar h2 {font-size:1.2rem; margin-bottom:10px;}
+            /* Compact Skills Section - Version ultra-condensée */
+            .sidebar {padding:12px 8px 8px 8px;}
+            .sidebar h2 {
+                font-size:1.1rem; 
+                margin-bottom:6px;
+                padding-bottom:4px;
+            }
             
-            .skills-section {margin-bottom:10px;}
-            .skills-header {padding:6px 8px; margin-bottom:5px;}
-            .skills-icon {width:16px; height:16px;}
-            .skills-icon svg {width:12px; height:12px;}
-            .skills-title {font-size:0.85rem;}
+            .skills-section {
+                margin-bottom:2px;
+                padding-bottom:0;
+            }
+            
+            .skills-header {
+                padding:4px 6px; 
+                margin-bottom:2px;
+                border-left-width: 2px;
+            }
+            
+            .skills-icon {
+                width:14px; 
+                height:14px;
+                margin-right:6px;
+            }
+            
+            .skills-icon svg {
+                width:10px; 
+                height:10px;
+            }
+            
+            .skills-title {
+                font-size:0.8rem;
+            }
+            
+            .skill-category {
+                margin-bottom:0;
+                padding-left: 3px;
+            }
             
             /* Compacter les titres des groupes */
             .skill-group {
-                margin-bottom: 5px;
-                padding-left: 5px;
+                margin-bottom:2px;
+                padding-left:4px;
+                border-left-width:1px;
             }
             
             .skill-group-title {
-                font-size: 0.7rem;
-                margin-bottom: 2px;
+                font-size:0.65rem;
+                margin-bottom:1px;
+                margin-top:1px;
+                padding-bottom:0;
             }
             
             .skill-tag {
-                font-size: 0.65rem;
-                padding: 1px 5px;
-                margin-bottom: 2px;
+                font-size:0.6rem;
+                padding:0px 4px;
+                margin-bottom:1px;
+                line-height:1.4;
+                border-width:1px;
             }
             
             /* Organisation en colonnes pour mobile */
             .skill-groups-row {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 5px;
-                margin-bottom: 5px;
+                display:flex;
+                flex-wrap:wrap;
+                gap:2px;
+                margin-bottom:2px;
             }
             
             .skill-groups-row .skill-group {
-                flex: 1 1 40%;
-                min-width: 110px;
-                border-left: 1px solid rgba(74, 140, 138, 0.2);
+                flex:1 1 40%;
+                min-width:100px;
+                margin-right:3px;
             }
             
             .skill-tags {
-                gap: 3px;
-                margin: 2px 0 4px 0;
+                gap:2px;
+                margin:1px 0 2px 0;
             }
             
             /* More compact Interests section */
-            .interest-item {padding:8px 10px;}
-            .interest-icon {font-size:1rem; margin-right:6px;}
+            .interest-item {padding:6px 8px;}
+            .interest-icon {font-size:0.9rem; margin-right:5px;}
             
             /* Ajuster les éléments du bullet-list pour mobile */
             .bullet-list li {
-                padding-left: 20px;
-                margin-bottom: 8px;
+                padding-left:20px;
+                margin-bottom:8px;
             }
             
             .bullet-list li:before {
-                top: 8px;
-                width: 6px;
-                height: 6px;
+                top:8px;
+                width:6px;
+                height:6px;
+            }
+            
+            /* Ajustements supplémentaires pour la section skills */
+            .skill-section:last-child {
+                margin-bottom:0;
+            }
+            
+            /* Réduire l'espace entre les sections */
+            .section {
+                margin-bottom:25px;
+            }
+            
+            /* Section title plus compacte */
+            .section-title {
+                font-size:1.3rem;
+                margin-bottom:15px;
+            }
+            
+            /* Timeline plus compacte */
+            .timeline-header {
+                padding:12px 15px;
+            }
+            
+            .timeline-title {
+                font-size:1rem;
+            }
+            
+            .main-content {
+                padding:20px 15px;
             }
         }
     </style>
