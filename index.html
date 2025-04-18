@@ -19,6 +19,11 @@
             --text: #334155;
             --white: #ffffff;
             --shadow: rgba(0,0,0,.1);
+            
+            /* Nuances de la couleur principale pour les skills */
+            --skill-shade-1: #4a8c8a;
+            --skill-shade-2: #3e7977;
+            --skill-shade-3: #326766;
         }
         * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; transition:all .3s ease;}
         body {color:var(--text); background-color:var(--light); line-height:1.6; font-size:15px;}
@@ -52,41 +57,108 @@
         .sidebar {background-color:var(--light); padding:25px 20px; box-shadow:inset -5px 0 15px -5px var(--shadow);}
         .sidebar h2 {color:var(--primary); font-size:1.5rem; margin-bottom:20px; padding-bottom:8px; border-bottom:2px solid var(--primary);}
         
-        /* Skills */
-        .skills-container {margin-bottom:18px;}
-        .skills-header {display:flex; align-items:center; margin-bottom:10px; background-color:var(--primary); color:white; padding:8px 12px; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,.1);}
-        .skills-icon {background-color:var(--white); color:var(--primary); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-right:10px;}
-        .skills-icon svg {width:14px; height:14px;}
-        .skills-title {font-weight:600; font-size:1rem; letter-spacing:.5px;}
+        /* Skills - Version optimisée */
+        .skills-section {
+            margin-bottom:15px;
+            position: relative;
+            padding-bottom: 2px;
+        }
         
-        /* Skills Category */
-        .skills-category {margin-bottom:15px; transition:all 0.3s ease;}
-        .skills-content {max-height:none; overflow:visible;}
+        .skills-header {
+            display:flex;
+            align-items:center;
+            margin-bottom:10px;
+            background-color:rgba(74, 140, 138, 0.12);
+            padding:8px 12px;
+            border-radius:6px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .skills-icon {
+            color:var(--primary);
+            width:20px;
+            height:20px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin-right:10px;
+        }
+        
+        .skills-icon svg {
+            width:16px;
+            height:16px;
+            fill: var(--primary);
+        }
+        
+        .skills-title {
+            font-weight:600;
+            font-size:1rem;
+            color:var(--primary-dark);
+        }
+        
+        /* Skill Categories */
+        .skill-category {
+            margin-bottom:12px;
+            padding-left: 5px;
+        }
+        
+        /* Skill Tags - Design transparent avec contour */
+        .skill-tags {
+            display:flex;
+            flex-wrap:wrap;
+            gap:6px;
+            margin:3px 0 8px 0;
+        }
+        
+        .skill-tag {
+            display:inline-block;
+            font-size:0.75rem;
+            background-color:transparent;
+            padding:2px 8px;
+            border-radius:3px;
+            margin-bottom:3px;
+            font-weight:500;
+            letter-spacing: 0.2px;
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Variantes de couleurs pour badges transparents */
+        .tag-management {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .tag-project {
+            color: var(--skill-shade-2);
+            border-color: var(--skill-shade-2);
+        }
+        
+        .tag-tech {
+            color: var(--skill-shade-3);
+            border-color: var(--skill-shade-3);
+        }
         
         /* Skill Groups */
-        .skill-groups-row {display:block;}
-        .skill-group {margin-bottom:8px;}
-        .skill-group:last-child {margin-bottom:0;}
-        .skill-group-header {font-size:.7rem; color:#666; margin-top:6px; margin-bottom:3px; border-bottom:1px dashed #ccc; padding-bottom:2px; font-weight:600;}
-        .skill-group-content {display:flex; flex-wrap:wrap; gap:4px;}
+        .skill-group {
+            margin-bottom:12px;
+            border-left: 2px solid rgba(74, 140, 138, 0.2);
+            padding-left: 8px;
+        }
         
-        /* Skill Badges */
-        .skill-badge-compact {padding:3px 8px; border-radius:3px; font-size:.75rem; margin:2px; display:inline-block; color:white; box-shadow:0 1px 2px rgba(0,0,0,.1); transition:all .2s ease;}
-        .skill-badge-compact:hover {transform:translateY(-2px) scale(1.03); box-shadow:0 2px 4px rgba(0,0,0,.15);}
-        
-        /* Skill Badge Colors */
-        .skill-leadership {background:linear-gradient(135deg,#5c6bc0,#3949ab);}
-        .skill-resource {background:linear-gradient(135deg,#43a047,#66bb6a);}
-        .skill-strategy {background:linear-gradient(135deg,#fb8c00,#ffa726);}
-        .skill-client {background:linear-gradient(135deg,#7e57c2,#9575cd);}
-        .skill-method {background:linear-gradient(135deg,#26a69a,#4db6ac);}
-        .skill-collab {background:linear-gradient(135deg,#ef5350,#f44336);}
-        .skill-personal {background:linear-gradient(135deg,#29b6f6,#4fc3f7);}
-        .skill-tech-os {background:linear-gradient(135deg,#455a64,#607d8b);}
-        .skill-tech-dev {background:linear-gradient(135deg,#0277bd,#039be5);}
-        .skill-tech-devops {background:linear-gradient(135deg,#00695c,#00897b);}
-        .skill-tech-infra {background:linear-gradient(135deg,#f57c00,#ff9800);}
-        .skill-tech-ai {background:linear-gradient(135deg,#7b1fa2,#9c27b0);}
+        .skill-group-title {
+            font-size:0.8rem;
+            color:#444;
+            font-weight:600;
+            margin-top:3px;
+            display:inline-block;
+            padding-bottom: 3px;
+        }
         
         /* Main Content */
         .main-content {padding:30px 40px;}
@@ -156,54 +228,65 @@
             
             /* Compact Skills Section */
             .sidebar {padding:15px 10px;}
-            .sidebar h2 {font-size:1.2rem; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;}
-            .sidebar h2::after {content:''; border:none;}
+            .sidebar h2 {font-size:1.2rem; margin-bottom:10px;}
             
-            .skills-container {margin-bottom:10px;}
-            .skills-header {padding:5px 8px; margin-bottom:5px;}
-            .skills-icon {width:18px; height:18px;}
-            .skills-icon svg {width:10px; height:10px;}
+            .skills-section {margin-bottom:10px;}
+            .skills-header {padding:6px 8px; margin-bottom:5px;}
+            .skills-icon {width:16px; height:16px;}
+            .skills-icon svg {width:12px; height:12px;}
             .skills-title {font-size:0.85rem;}
             
-            /* Regrouper les sous-sections sur une ligne */
+            /* Compacter les titres des groupes */
+            .skill-group {
+                margin-bottom: 5px;
+                padding-left: 5px;
+            }
+            
+            .skill-group-title {
+                font-size: 0.7rem;
+                margin-bottom: 2px;
+            }
+            
+            .skill-tag {
+                font-size: 0.65rem;
+                padding: 1px 5px;
+                margin-bottom: 2px;
+            }
+            
+            /* Organisation en colonnes pour mobile */
             .skill-groups-row {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 4px;
+                gap: 5px;
                 margin-bottom: 5px;
             }
             
-            .skill-group {
-                margin-bottom: 5px;
-                margin-right: 5px;
-                flex: 1 1 auto;
-                min-width: 120px;
+            .skill-groups-row .skill-group {
+                flex: 1 1 40%;
+                min-width: 110px;
+                border-left: 1px solid rgba(74, 140, 138, 0.2);
             }
             
-            .skill-group-header {
-                font-size: 0.65rem;
-                margin-top: 3px;
-                margin-bottom: 2px;
-                padding: 2px 4px;
-                border-bottom: none;
-                background-color: rgba(0,0,0,0.05);
-                border-radius: 3px;
-                display: inline-block;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 100%;
-            }
-            
-            .skill-badge-compact {
-                padding: 2px 5px;
-                font-size: 0.65rem;
-                margin: 1px;
+            .skill-tags {
+                gap: 3px;
+                margin: 2px 0 4px 0;
             }
             
             /* More compact Interests section */
             .interest-item {padding:8px 10px;}
             .interest-icon {font-size:1rem; margin-right:6px;}
+            
+            /* Ajuster les éléments du bullet-list pour mobile */
+            .bullet-list li {
+                padding-left: 20px;
+                margin-bottom: 8px;
+            }
+            
+            .bullet-list li:before {
+                top: 8px;
+                width: 6px;
+                height: 6px;
+            }
         }
     </style>
 </head>
@@ -236,137 +319,143 @@
         <div class="sidebar">
             <h2>COMPÉTENCES</h2>
             
-            <div class="skills-content">
-                <!-- Management Skills -->
-                <div class="skills-container skills-category">
-                    <div class="skills-header">
-                        <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg></div>
-                        <div class="skills-title">Management</div>
-                    </div>
+            <!-- Management Skills - Version optimisée -->
+            <div class="skills-section">
+                <div class="skills-header">
+                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg></div>
+                    <div class="skills-title">Management</div>
+                </div>
+                
+                <div class="skill-category">
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-header">Leadership et RH</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-leadership">Leadership</span>
-                                <span class="skill-badge-compact skill-leadership">Coaching</span>
-                                <span class="skill-badge-compact skill-leadership">Suivi collaborateurs</span>
-                                <span class="skill-badge-compact skill-leadership">People review</span>
-                                <span class="skill-badge-compact skill-leadership">Définition objectifs</span>
+                            <div class="skill-group-title">Leadership & RH</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-management">Leadership</span>
+                                <span class="skill-tag tag-management">Coaching</span>
+                                <span class="skill-tag tag-management">Suivi collaborateurs</span>
+                                <span class="skill-tag tag-management">People review</span>
+                                <span class="skill-tag tag-management">Définition objectifs</span>
                             </div>
                         </div>
+                        
                         <div class="skill-group">
-                            <div class="skill-group-header">Gestion stratégique</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-strategy">Revue budgétaire</span>
-                                <span class="skill-badge-compact skill-strategy">Gestion ressources</span>
+                            <div class="skill-group-title">Stratégie</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-management">Revue budgétaire</span>
+                                <span class="skill-tag tag-management">Gestion ressources</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Project Management Skills - Version optimisée -->
+            <div class="skills-section">
+                <div class="skills-header">
+                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" /></svg></div>
+                    <div class="skills-title">Gestion de projet</div>
+                </div>
                 
-                <!-- Project Management Skills -->
-                <div class="skills-container skills-category">
-                    <div class="skills-header">
-                        <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" /></svg></div>
-                        <div class="skills-title">Gestion de projet</div>
-                    </div>
+                <div class="skill-category">
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-header">Planification</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-resource">Pilotage ressources</span>
-                                <span class="skill-badge-compact skill-resource">Planification</span>
+                            <div class="skill-group-title">Planification</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-project">Pilotage ressources</span>
+                                <span class="skill-tag tag-project">Planification</span>
                             </div>
                         </div>
+                        
                         <div class="skill-group">
-                            <div class="skill-group-header">Relations clients</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-client">Relation client</span>
-                                <span class="skill-badge-compact skill-client">Avant-ventes</span>
-                            </div>
-                        </div>
-                        <div class="skill-group">
-                            <div class="skill-group-header">Méthodologie</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-method">Méthodes Agiles</span>
-                                <span class="skill-badge-compact skill-method">Suivi budgétaire</span>
-                                <span class="skill-badge-compact skill-method">Analyse technique</span>
+                            <div class="skill-group-title">Client & Méthodes</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-project">Relation client</span>
+                                <span class="skill-tag tag-project">Avant-ventes</span>
+                                <span class="skill-tag tag-project">Méthodes Agiles</span>
+                                <span class="skill-tag tag-project">Suivi budgétaire</span>
+                                <span class="skill-tag tag-project">Analyse technique</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Technical Skills - Version optimisée -->
+            <div class="skills-section">
+                <div class="skills-header">
+                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg></div>
+                    <div class="skills-title">Technologies</div>
+                </div>
                 
-                <!-- Technical Skills -->
-                <div class="skills-container skills-category">
-                    <div class="skills-header">
-                        <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg></div>
-                        <div class="skills-title">Technologies</div>
-                    </div>
+                <div class="skill-category">
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-header">Langages</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-tech-dev">Java/Springboot</span>
-                                <span class="skill-badge-compact skill-tech-dev">REST APIs</span>
-                                <span class="skill-badge-compact skill-tech-dev">EmberJs</span>
-                                <span class="skill-badge-compact skill-tech-dev">MySQL</span>
+                            <div class="skill-group-title">Dev & Frameworks</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-tech">Java/Springboot</span>
+                                <span class="skill-tag tag-tech">REST APIs</span>
+                                <span class="skill-tag tag-tech">EmberJs</span>
+                                <span class="skill-tag tag-tech">MySQL</span>
                             </div>
                         </div>
+                        
                         <div class="skill-group">
-                            <div class="skill-group-header">DevOps</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-tech-devops">Git/Gitlab</span>
-                                <span class="skill-badge-compact skill-tech-devops">CI/CD</span>
-                                <span class="skill-badge-compact skill-tech-devops">Confluence</span>
-                                <span class="skill-badge-compact skill-tech-devops">Jira</span>
+                            <div class="skill-group-title">DevOps</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-tech">Git/Gitlab</span>
+                                <span class="skill-tag tag-tech">CI/CD</span>
+                                <span class="skill-tag tag-tech">Confluence</span>
+                                <span class="skill-tag tag-tech">Jira</span>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-header">Infrastructure</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-tech-infra">Docker</span>
-                                <span class="skill-badge-compact skill-tech-infra">Cloud GCP</span>
-                                <span class="skill-badge-compact skill-tech-infra">NGINX</span>
+                            <div class="skill-group-title">Infrastructure</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-tech">Docker</span>
+                                <span class="skill-tag tag-tech">Cloud GCP</span>
+                                <span class="skill-tag tag-tech">NGINX</span>
                             </div>
                         </div>
+                        
                         <div class="skill-group">
-                            <div class="skill-group-header">IA</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-tech-ai">GenAI/LLM/Agents</span>
-                            </div>
-                        </div>
-                        <div class="skill-group">
-                            <div class="skill-group-header">OS</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-tech-os">Windows</span>
-                                <span class="skill-badge-compact skill-tech-os">GNU/Linux</span>
+                            <div class="skill-group-title">OS & IA</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-tech">Windows</span>
+                                <span class="skill-tag tag-tech">GNU/Linux</span>
+                                <span class="skill-tag tag-tech">GenAI/LLM/Agents</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Personal Skills - Version optimisée -->
+            <div class="skills-section">
+                <div class="skills-header">
+                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" /></svg></div>
+                    <div class="skills-title">Qualités personnelles</div>
+                </div>
                 
-                <!-- Personal Skills -->
-                <div class="skills-container skills-category">
-                    <div class="skills-header">
-                        <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" /></svg></div>
-                        <div class="skills-title">Qualités personnelles</div>
-                    </div>
+                <div class="skill-category">
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-header">Collaboratives</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-collab">Esprit d'équipe</span>
-                                <span class="skill-badge-compact skill-collab">Communication</span>
+                            <div class="skill-group-title">Collaboratives</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-management">Esprit d'équipe</span>
+                                <span class="skill-tag tag-management">Communication</span>
                             </div>
                         </div>
+                        
                         <div class="skill-group">
-                            <div class="skill-group-header">Individuelles</div>
-                            <div class="skill-group-content">
-                                <span class="skill-badge-compact skill-personal">Organisation</span>
-                                <span class="skill-badge-compact skill-personal">Esprit d'analyse</span>
-                                <span class="skill-badge-compact skill-personal">Adaptabilité</span>
+                            <div class="skill-group-title">Individuelles</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag tag-management">Organisation</span>
+                                <span class="skill-tag tag-management">Esprit d'analyse</span>
+                                <span class="skill-tag tag-management">Adaptabilité</span>
                             </div>
                         </div>
                     </div>
