@@ -27,7 +27,7 @@
         }
         * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; transition:all .3s ease;}
         body {color:var(--text); background-color:var(--light); line-height:1.6; font-size:15px;}
-        .container {max-width:1100px; margin:30px auto; display:grid; grid-template-columns:300px 1fr; background-color:var(--white); box-shadow:0 15px 35px var(--shadow); border-radius:12px; overflow:hidden;}
+        .container {max-width:1100px; margin:30px auto; display:grid; grid-template-columns:300px 1fr; background-color:var(--white); box-shadow:0 15px 35px var(--shadow); border-radius:12px; overflow:hidden; position: relative;}
         
         /* Header Section */
         header {grid-column:1/-1; background:linear-gradient(135deg,var(--primary-dark),var(--primary)); color:white; padding:15px 25px; position:relative; overflow:hidden;}
@@ -52,6 +52,39 @@
         .contact-item a:hover {text-decoration:underline;}
         .contact-icon {margin-right:6px;}
         .contact-icon svg {width:14px; height:14px; fill:currentColor;}
+        
+        /* Language Switch Button */
+        .language-switch {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .language-switch svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 6px;
+            fill: currentColor;
+        }
         
         /* Sidebar */
         .sidebar {background-color:var(--light); padding:25px 20px; box-shadow:inset -5px 0 15px -5px var(--shadow);}
@@ -350,63 +383,104 @@
             .main-content {
                 padding:20px 15px;
             }
+            
+            /* Language switch in mobile */
+            .language-switch {
+                top: 10px;
+                right: 10px;
+                padding: 4px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .language-switch svg {
+                width: 14px;
+                height: 14px;
+                margin-right: 4px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Language Switch Button -->
+        <button class="language-switch" id="languageSwitch">
+            <svg viewBox="0 0 24 24">
+                <path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" />
+            </svg>
+            <span data-lang="fr">EN</span>
+            <span data-lang="en">FR</span>
+        </button>
+        
         <!-- Header -->
         <header>
             <div class="header-content">
                 <div class="profile-info">
                     <div class="profile-name"><h1>Alan DAMOTTE</h1></div>
-                    <div class="profile-title">TEAM MANAGER – DIRECTEUR DE PROJET</div>
+                    <div class="profile-title" data-lang="fr">TEAM MANAGER – DIRECTEUR DE PROJET</div>
+                    <div class="profile-title" data-lang="en">TEAM MANAGER – PROJECT DIRECTOR</div>
                     <div class="profile-intro-section">
                         <div class="profile-intro-header">
-                            <span>A propos de moi</span>
+                            <span data-lang="fr">A propos de moi</span>
+                            <span data-lang="en">About me</span>
                             <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" fill="currentColor"/></svg>
                         </div>
-                        <div class="profile-intro">Team manager ayant fait ses preuves dans le pilotage de projets complexes et stratégiques. Je suis expérimenté dans le management d'équipe comptant jusqu'à 20 ingénieurs et en collaboration avec des équipes cross-fonctionnelles. J'aime continuer à me développer, tant sur le plan professionnel que personnel, pour atteindre de nouveaux objectifs, et m'engage dans une quête constante d'amélioration continue pour stimuler l'innovation.</div>
+                        <div class="profile-intro" data-lang="fr">Team manager ayant fait ses preuves dans le pilotage de projets complexes et stratégiques. Je suis expérimenté dans le management d'équipe comptant jusqu'à 20 ingénieurs et en collaboration avec des équipes cross-fonctionnelles. J'aime continuer à me développer, tant sur le plan professionnel que personnel, pour atteindre de nouveaux objectifs, et m'engage dans une quête constante d'amélioration continue pour stimuler l'innovation.</div>
+                        <div class="profile-intro" data-lang="en">Proven team manager in leading complex and strategic projects. I am experienced in managing teams of up to 20 engineers and collaborating with cross-functional teams. I enjoy continuing to develop both professionally and personally to achieve new goals, and I am committed to continuous improvement to drive innovation.</div>
                     </div>
                 </div>
             </div>
             <div class="contact-info">
                 <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg></div><div><a href="mailto:Alan.damotte@gmail.com">Alan.damotte@gmail.com</a></div></div>
-                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" /></svg></div><div>Anglais - Professionnel - Parlé et écrit (TOEIC 920)</div></div>
-                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg></div><div>31 ans - Permis B</div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" /></svg></div><div data-lang="fr">Anglais - Professionnel - Parlé et écrit (TOEIC 920)</div><div data-lang="en">English - Professional - Spoken and written (TOEIC 920)</div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg></div><div data-lang="fr">31 ans - Permis B</div><div data-lang="en">31 years old - Driver's license</div></div>
                 <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z" /></svg></div><div><a href="https://www.linkedin.com/in/alandamotte/" target="_blank">linkedin.com/in/alandamotte</a></div></div>
             </div>
         </header>
         
         <!-- Sidebar -->
         <div class="sidebar">
-            <h2>COMPÉTENCES</h2>
+            <h2 data-lang="fr">COMPÉTENCES</h2>
+            <h2 data-lang="en">SKILLS</h2>
             
             <!-- Management Skills - Version optimisée -->
             <div class="skills-section">
                 <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg></div>
-                    <div class="skills-title">Management</div>
+                    <div class="skills-title" data-lang="fr">Management</div>
+                    <div class="skills-title" data-lang="en">Management</div>
                 </div>
                 
                 <div class="skill-category">
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-title">Leadership & RH</div>
-                            <div class="skill-tags">
+                            <div class="skill-group-title" data-lang="fr">Leadership & RH</div>
+                            <div class="skill-group-title" data-lang="en">Leadership & HR</div>
+                            <div class="skill-tags" data-lang="fr">
                                 <span class="skill-tag tag-management">Leadership</span>
                                 <span class="skill-tag tag-management">Coaching</span>
                                 <span class="skill-tag tag-management">Suivi collaborateurs</span>
                                 <span class="skill-tag tag-management">People review</span>
                                 <span class="skill-tag tag-management">Définition objectifs</span>
                             </div>
+                            <div class="skill-tags" data-lang="en">
+                                <span class="skill-tag tag-management">Leadership</span>
+                                <span class="skill-tag tag-management">Coaching</span>
+                                <span class="skill-tag tag-management">Team monitoring</span>
+                                <span class="skill-tag tag-management">People review</span>
+                                <span class="skill-tag tag-management">Goal setting</span>
+                            </div>
                         </div>
                         
                         <div class="skill-group">
-                            <div class="skill-group-title">Stratégie</div>
-                            <div class="skill-tags">
+                            <div class="skill-group-title" data-lang="fr">Stratégie</div>
+                            <div class="skill-group-title" data-lang="en">Strategy</div>
+                            <div class="skill-tags" data-lang="fr">
                                 <span class="skill-tag tag-management">Revue budgétaire</span>
                                 <span class="skill-tag tag-management">Gestion ressources</span>
+                            </div>
+                            <div class="skill-tags" data-lang="en">
+                                <span class="skill-tag tag-management">Budget review</span>
+                                <span class="skill-tag tag-management">Resource management</span>
                             </div>
                         </div>
                     </div>
@@ -417,27 +491,41 @@
             <div class="skills-section">
                 <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" /></svg></div>
-                    <div class="skills-title">Gestion de projet</div>
+                    <div class="skills-title" data-lang="fr">Gestion de projet</div>
+                    <div class="skills-title" data-lang="en">Project Management</div>
                 </div>
                 
                 <div class="skill-category">
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-title">Planification</div>
-                            <div class="skill-tags">
+                            <div class="skill-group-title" data-lang="fr">Planification</div>
+                            <div class="skill-group-title" data-lang="en">Planning</div>
+                            <div class="skill-tags" data-lang="fr">
                                 <span class="skill-tag tag-project">Pilotage ressources</span>
                                 <span class="skill-tag tag-project">Planification</span>
+                            </div>
+                            <div class="skill-tags" data-lang="en">
+                                <span class="skill-tag tag-project">Resource planning</span>
+                                <span class="skill-tag tag-project">Scheduling</span>
                             </div>
                         </div>
                         
                         <div class="skill-group">
-                            <div class="skill-group-title">Client & Méthodes</div>
-                            <div class="skill-tags">
+                            <div class="skill-group-title" data-lang="fr">Client & Méthodes</div>
+                            <div class="skill-group-title" data-lang="en">Client & Methods</div>
+                            <div class="skill-tags" data-lang="fr">
                                 <span class="skill-tag tag-project">Relation client</span>
                                 <span class="skill-tag tag-project">Avant-ventes</span>
                                 <span class="skill-tag tag-project">Méthodes Agiles</span>
                                 <span class="skill-tag tag-project">Suivi budgétaire</span>
                                 <span class="skill-tag tag-project">Analyse technique</span>
+                            </div>
+                            <div class="skill-tags" data-lang="en">
+                                <span class="skill-tag tag-project">Client relationship</span>
+                                <span class="skill-tag tag-project">Pre-sales</span>
+                                <span class="skill-tag tag-project">Agile methods</span>
+                                <span class="skill-tag tag-project">Budget tracking</span>
+                                <span class="skill-tag tag-project">Technical analysis</span>
                             </div>
                         </div>
                     </div>
@@ -448,13 +536,15 @@
             <div class="skills-section">
                 <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg></div>
-                    <div class="skills-title">Technologies</div>
+                    <div class="skills-title" data-lang="fr">Technologies</div>
+                    <div class="skills-title" data-lang="en">Technologies</div>
                 </div>
                 
                 <div class="skill-category">
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-title">Dev & Frameworks</div>
+                            <div class="skill-group-title" data-lang="fr">Dev & Frameworks</div>
+                            <div class="skill-group-title" data-lang="en">Dev & Frameworks</div>
                             <div class="skill-tags">
                                 <span class="skill-tag tag-tech">Java/Springboot</span>
                                 <span class="skill-tag tag-tech">REST APIs</span>
@@ -476,7 +566,8 @@
                     
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-title">Infrastructure</div>
+                            <div class="skill-group-title" data-lang="fr">Infrastructure</div>
+                            <div class="skill-group-title" data-lang="en">Infrastructure</div>
                             <div class="skill-tags">
                                 <span class="skill-tag tag-tech">Docker</span>
                                 <span class="skill-tag tag-tech">Cloud GCP</span>
@@ -485,7 +576,8 @@
                         </div>
                         
                         <div class="skill-group">
-                            <div class="skill-group-title">OS & IA</div>
+                            <div class="skill-group-title" data-lang="fr">OS & IA</div>
+                            <div class="skill-group-title" data-lang="en">OS & AI</div>
                             <div class="skill-tags">
                                 <span class="skill-tag tag-tech">Windows</span>
                                 <span class="skill-tag tag-tech">GNU/Linux</span>
@@ -500,25 +592,37 @@
             <div class="skills-section">
                 <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" /></svg></div>
-                    <div class="skills-title">Qualités personnelles</div>
+                    <div class="skills-title" data-lang="fr">Qualités personnelles</div>
+                    <div class="skills-title" data-lang="en">Personal Skills</div>
                 </div>
                 
                 <div class="skill-category">
                     <div class="skill-groups-row">
                         <div class="skill-group">
-                            <div class="skill-group-title">Collaboratives</div>
-                            <div class="skill-tags">
+                            <div class="skill-group-title" data-lang="fr">Collaboratives</div>
+                            <div class="skill-group-title" data-lang="en">Collaborative</div>
+                            <div class="skill-tags" data-lang="fr">
                                 <span class="skill-tag tag-management">Esprit d'équipe</span>
+                                <span class="skill-tag tag-management">Communication</span>
+                            </div>
+                            <div class="skill-tags" data-lang="en">
+                                <span class="skill-tag tag-management">Team spirit</span>
                                 <span class="skill-tag tag-management">Communication</span>
                             </div>
                         </div>
                         
                         <div class="skill-group">
-                            <div class="skill-group-title">Individuelles</div>
-                            <div class="skill-tags">
+                            <div class="skill-group-title" data-lang="fr">Individuelles</div>
+                            <div class="skill-group-title" data-lang="en">Individual</div>
+                            <div class="skill-tags" data-lang="fr">
                                 <span class="skill-tag tag-management">Organisation</span>
                                 <span class="skill-tag tag-management">Esprit d'analyse</span>
                                 <span class="skill-tag tag-management">Adaptabilité</span>
+                            </div>
+                            <div class="skill-tags" data-lang="en">
+                                <span class="skill-tag tag-management">Organization</span>
+                                <span class="skill-tag tag-management">Analytical thinking</span>
+                                <span class="skill-tag tag-management">Adaptability</span>
                             </div>
                         </div>
                     </div>
@@ -530,33 +634,49 @@
         <div class="main-content">
             <!-- Experience Section -->
             <div class="section">
-                <h2 class="section-title">EXPÉRIENCE PROFESSIONNELLE</h2>
+                <h2 class="section-title" data-lang="fr">EXPÉRIENCE PROFESSIONNELLE</h2>
+                <h2 class="section-title" data-lang="en">PROFESSIONAL EXPERIENCE</h2>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-header active">
                             <div class="timeline-title-wrapper">
-                                <div class="timeline-title">TEAM MANAGER – OPEN BANKING</div>
+                                <div class="timeline-title" data-lang="fr">TEAM MANAGER – OPEN BANKING</div>
+                                <div class="timeline-title" data-lang="en">TEAM MANAGER – OPEN BANKING</div>
                                 <div>
                                     <span class="timeline-subtitle">WORLDLINE</span>
-                                    <span class="timeline-date">MAI 2021 - PRÉSENT</span>
+                                    <span class="timeline-date" data-lang="fr">MAI 2021 - PRÉSENT</span>
+                                    <span class="timeline-date" data-lang="en">MAY 2021 - PRESENT</span>
                                 </div>
-                                <div class="timeline-summary">Direction d'une équipe de 20 collaborateurs et gestion de projet SaaS pour 25 clients internationaux.</div>
+                                <div class="timeline-summary" data-lang="fr">Direction d'une équipe de 20 collaborateurs et gestion de projet SaaS pour 25 clients internationaux.</div>
+                                <div class="timeline-summary" data-lang="en">Leading a team of 20 employees and SaaS project management for 25 international clients.</div>
                             </div>
                             <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
                         </div>
                         <div class="timeline-content active">
                             <div class="timeline-content-inner">
-                                <ul class="bullet-list">
+                                <ul class="bullet-list" data-lang="fr">
                                     <li>Direction de projet sur des enjeux de mise en conformité PSD2 (Produit fourni en mode SaaS) – Build & Run pour 25 clients internationaux</li>
                                     <li>Gestion du budget et des ressources – Avant-vente – Définition de la stratégie technico-fonctionnelle du produit – Suivi de l'évolution de la réglementation (dont PSD3 / PSR1 / Instant Payment - Verification of Payee)</li>
                                     <li>Management opérationnel et hiérarchique d'une équipe de 20 collaborateurs – Recrutement – Plan de formation – Entretiens de performances et suivi de carrière – People review / Salary review – Coaching</li>
                                     <li>Conduite de projet de migration Cloud (Google Cloud Platform) – Démarche SRE – Amélioration continue – Conduite du changement et transition DevOps / FinOps</li>
                                     <li>Référent du département sur l'utilisation de l'IA au sein des produits et des équipes - Pilotage de la mise en place d'un agent IA dédié à l'équipe projet</li>
                                 </ul>
-                                <div class="badge-container">
+                                <ul class="bullet-list" data-lang="en">
+                                    <li>Project direction on PSD2 compliance issues (Product provided in SaaS mode) – Build & Run for 25 international clients</li>
+                                    <li>Budget and resource management – Pre-sales – Definition of the product's technical and functional strategy – Monitoring regulatory developments (including PSD3 / PSR1 / Instant Payment - Verification of Payee)</li>
+                                    <li>Operational and hierarchical management of a team of 20 employees – Recruitment – Training plan – Performance reviews and career development – People review / Salary review – Coaching</li>
+                                    <li>Cloud migration project management (Google Cloud Platform) – SRE approach – Continuous improvement – Change management and DevOps / FinOps transition</li>
+                                    <li>Department reference on the use of AI within products and teams - Managing the implementation of an AI agent dedicated to the project team</li>
+                                </ul>
+                                <div class="badge-container" data-lang="fr">
                                     <span class="badge-financial"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M11.8,10.9c-2.27-0.59-3-1.2-3-2.15c0-1.09,1.01-1.85,2.7-1.85c1.78,0,2.44,0.85,2.5,2.1h2.21 c-0.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94,0.42-3.5,1.68-3.5,3.61c0,2.31,1.91,3.46,4.7,4.13c2.5,0.6,3,1.48,3,2.41 c0,0.69-0.49,1.79-2.7,1.79c-2.06,0-2.87-0.92-2.98-2.1H6.32c0.12,2.19,1.76,3.42,3.68,3.83V21h3v-2.15 c1.95-0.37,3.5-1.5,3.5-3.55C16.5,12.46,14.07,11.49,11.8,10.9z"></path></svg>CA: 3M€ • Marge: +20% en 2 ans</span>
                                     <span class="badge-team"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.55,12H13V7H16V10.43C16.37,10.16 16.81,10 17.25,10C18.5,10 19.5,11 19.5,12.25C19.5,13.5 18.5,14.5 17.25,14.5C17,14.5 16.75,14.43 16.5,14.32V14.5H13.5V12.5H15.5V12.72C15.76,12.89 16,13 16.25,13C17.07,13 17.75,12.32 17.75,11.5C17.75,10.68 17.07,10 16.25,10H16.25L17,10M11,19.5V18H9V11A2,2 0 0,0 7,9H5V18H3V7H7A4,4 0 0,1 11,11V18H9V19.5H11Z"></path></svg>Satisfaction d'équipe: +10% en 2 ans</span>
                                     <span class="badge-career"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"></path></svg>Identifié parmi les Talents Worldline 2022, 2023 et 2024</span>
+                                </div>
+                                <div class="badge-container" data-lang="en">
+                                    <span class="badge-financial"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M11.8,10.9c-2.27-0.59-3-1.2-3-2.15c0-1.09,1.01-1.85,2.7-1.85c1.78,0,2.44,0.85,2.5,2.1h2.21 c-0.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94,0.42-3.5,1.68-3.5,3.61c0,2.31,1.91,3.46,4.7,4.13c2.5,0.6,3,1.48,3,2.41 c0,0.69-0.49,1.79-2.7,1.79c-2.06,0-2.87-0.92-2.98-2.1H6.32c0.12,2.19,1.76,3.42,3.68,3.83V21h3v-2.15 c1.95-0.37,3.5-1.5,3.5-3.55C16.5,12.46,14.07,11.49,11.8,10.9z"></path></svg>Revenue: €3M • Margin: +20% in 2 years</span>
+                                    <span class="badge-team"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.55,12H13V7H16V10.43C16.37,10.16 16.81,10 17.25,10C18.5,10 19.5,11 19.5,12.25C19.5,13.5 18.5,14.5 17.25,14.5C17,14.5 16.75,14.43 16.5,14.32V14.5H13.5V12.5H15.5V12.72C15.76,12.89 16,13 16.25,13C17.07,13 17.75,12.32 17.75,11.5C17.75,10.68 17.07,10 16.25,10H16.25L17,10M11,19.5V18H9V11A2,2 0 0,0 7,9H5V18H3V7H7A4,4 0 0,1 11,11V18H9V19.5H11Z"></path></svg>Team satisfaction: +10% in 2 years</span>
+                                    <span class="badge-career"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"></path></svg>Identified among Worldline Talents 2022, 2023 and 2024</span>
                                 </div>
                             </div>
                         </div>
@@ -565,45 +685,30 @@
                     <div class="timeline-item">
                         <div class="timeline-header">
                             <div class="timeline-title-wrapper">
-                                <div class="timeline-title">CHEF DE PROJET – OPEN BANKING</div>
+                                <div class="timeline-title" data-lang="fr">CHEF DE PROJET – OPEN BANKING</div>
+                                <div class="timeline-title" data-lang="en">PROJECT MANAGER – OPEN BANKING</div>
                                 <div>
                                     <span class="timeline-subtitle">WORLDLINE</span>
                                     <span class="timeline-date">2019 - 2021</span>
                                 </div>
-                                <div class="timeline-summary">Gestion de projet et relation client pour un portefeuille de 10 clients internationaux.</div>
+                                <div class="timeline-summary" data-lang="fr">Gestion de projet et relation client pour un portefeuille de 10 clients internationaux.</div>
+                                <div class="timeline-summary" data-lang="en">Project management and client relationship for a portfolio of 10 international clients.</div>
                             </div>
                             <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
                         </div>
                         <div class="timeline-content">
                             <div class="timeline-content-inner">
-                                <ul class="bullet-list">
+                                <ul class="bullet-list" data-lang="fr">
                                     <li>Gestion de projet - Relation client et pilotage d'un portefeuille de 10 clients internationaux</li>
                                     <li>Suivi des déploiements, des lots de développements spécifiques et de la recette – Participation aux enjeux d'exploitation de la solution et support de recette et production</li>
                                     <li>Pilotage de l'industrialisation et de l'amélioration des processus d'exploitation</li>
                                     <li>Implication dans la stratégie produit</li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-title-wrapper">
-                                <div class="timeline-title">CHEF DE PROJET – COTIZEN</div>
-                                <div>
-                                    <span class="timeline-subtitle">WORLDLINE</span>
-                                    <span class="timeline-date">2018</span>
-                                </div>
-                                <div class="timeline-summary">Gestion d'un service de paiement en ligne pour 4 grandes fédérations françaises.</div>
-                            </div>
-                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-content-inner">
-                                <ul class="bullet-list">
-                                    <li>Service de gestion des ordres de paiement en ligne pour le compte de 4 grandes fédérations françaises</li>
-                                    <li>Gestion de projet, suivi des demandes d'évolutions du service, gestion des partenaires, suivi de production du service</li>
-                                    <li>Encadrement d'une équipe de développeurs pour les phases d'évolution et d'exploitation du service, organisation des comités de projet hebdomadaires</li>
+                                <ul class="bullet-list" data-lang="en">
+                                    <li>Project management - Client relationship and oversight of a portfolio of 10 international clients</li>
+                                    <li>Tracking of deployments, specific development packages and testing - Participation in solution operations and testing and production support</li>
+                                    <li>Management of industrialization and improvement of operational processes</li>
+                                    <li>Involvement in product strategy</li>
                                 </ul>
                             </div>
                         </div>
@@ -612,21 +717,58 @@
                     <div class="timeline-item">
                         <div class="timeline-header">
                             <div class="timeline-title-wrapper">
-                                <div class="timeline-title">RESPONSABLE D'APPLICATION – CYKLEO</div>
+                                <div class="timeline-title" data-lang="fr">CHEF DE PROJET – COTIZEN</div>
+                                <div class="timeline-title" data-lang="en">PROJECT MANAGER – COTIZEN</div>
                                 <div>
                                     <span class="timeline-subtitle">WORLDLINE</span>
-                                    <span class="timeline-date">2016 - 2018</span>
+                                    <span class="timeline-date">2018</span>
                                 </div>
-                                <div class="timeline-summary">Conception et développement d'un service de location de vélos en libre-service.</div>
+                                <div class="timeline-summary" data-lang="fr">Gestion d'un service de paiement en ligne pour 4 grandes fédérations françaises.</div>
+                                <div class="timeline-summary" data-lang="en">Management of an online payment service for 4 major French federations.</div>
                             </div>
                             <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
                         </div>
                         <div class="timeline-content">
                             <div class="timeline-content-inner">
-                                <ul class="bullet-list">
+                                <ul class="bullet-list" data-lang="fr">
+                                    <li>Service de gestion des ordres de paiement en ligne pour le compte de 4 grandes fédérations françaises</li>
+                                    <li>Gestion de projet, suivi des demandes d'évolutions du service, gestion des partenaires, suivi de production du service</li>
+                                    <li>Encadrement d'une équipe de développeurs pour les phases d'évolution et d'exploitation du service, organisation des comités de projet hebdomadaires</li>
+                                </ul>
+                                <ul class="bullet-list" data-lang="en">
+                                    <li>Online payment order management service for 4 major French federations</li>
+                                    <li>Project management, tracking of service evolution requests, partner management, service production monitoring</li>
+                                    <li>Supervision of a development team for the service evolution and operation phases, organization of weekly project committees</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div class="timeline-title-wrapper">
+                                <div class="timeline-title" data-lang="fr">RESPONSABLE D'APPLICATION – CYKLEO</div>
+                                <div class="timeline-title" data-lang="en">APPLICATION MANAGER – CYKLEO</div>
+                                <div>
+                                    <span class="timeline-subtitle">WORLDLINE</span>
+                                    <span class="timeline-date">2016 - 2018</span>
+                                </div>
+                                <div class="timeline-summary" data-lang="fr">Conception et développement d'un service de location de vélos en libre-service.</div>
+                                <div class="timeline-summary" data-lang="en">Design and development of a self-service bike rental service.</div>
+                            </div>
+                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-content-inner">
+                                <ul class="bullet-list" data-lang="fr">
                                     <li>Service de gestion de location de vélos en libre-service</li>
                                     <li>Conception, rédaction de spécifications fonctionnelles et techniques, développements logiciels</li>
                                     <li>Elaboration de propositions commerciales, relation client et exploitation de la solution</li>
+                                </ul>
+                                <ul class="bullet-list" data-lang="en">
+                                    <li>Self-service bike rental management service</li>
+                                    <li>Design, drafting of functional and technical specifications, software development</li>
+                                    <li>Development of commercial proposals, client relations and solution operations</li>
                                 </ul>
                             </div>
                         </div>
@@ -636,19 +778,24 @@
             
             <!-- Formation Section -->
             <div class="section">
-                <h2 class="section-title">FORMATION ET DIPLÔME</h2>
+                <h2 class="section-title" data-lang="fr">FORMATION ET DIPLÔME</h2>
+                <h2 class="section-title" data-lang="en">EDUCATION AND QUALIFICATION</h2>
                 <div class="timeline-item">
                     <div class="timeline-header education-header">
                         <div class="timeline-title-wrapper">
-                            <div class="timeline-title">DIPLÔME D'INGÉNIEUR INFORMATIQUE</div>
+                            <div class="timeline-title" data-lang="fr">DIPLÔME D'INGÉNIEUR INFORMATIQUE</div>
+                            <div class="timeline-title" data-lang="en">COMPUTER SCIENCE ENGINEERING DEGREE</div>
                             <div>
                                 <span class="timeline-subtitle">POLYTECH GRENOBLE</span>
                                 <span class="timeline-date">2016</span>
                             </div>
-                            <div class="timeline-summary">Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</div>
+                            <div class="timeline-summary" data-lang="fr">Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</div>
+                            <div class="timeline-summary" data-lang="en">Computer Networks and Multimedia Communication – Multimedia specialization</div>
                             <div style="margin-top: 10px;">
-                                <span class="badge-education badge-inline"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>Mention Bien</span>
-                                <span class="badge-major badge-inline"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,15.4V6.1L13.71,10.13L18.09,10.5L14.77,13.39L15.76,17.67M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>Major de promotion 2016</span>
+                                <span class="badge-education badge-inline" data-lang="fr"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>Mention Bien</span>
+                                <span class="badge-education badge-inline" data-lang="en"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>Upper Second-Class Honours</span>
+                                <span class="badge-major badge-inline" data-lang="fr"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,15.4V6.1L13.71,10.13L18.09,10.5L14.77,13.39L15.76,17.67M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>Major de promotion 2016</span>
+                                <span class="badge-major badge-inline" data-lang="en"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,15.4V6.1L13.71,10.13L18.09,10.5L14.77,13.39L15.76,17.67M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>Class Valedictorian 2016</span>
                             </div>
                         </div>
                     </div>
@@ -657,13 +804,14 @@
             
             <!-- Interests Section -->
             <div class="section">
-                <h2 class="section-title">CENTRES D'INTÉRÊTS</h2>
+                <h2 class="section-title" data-lang="fr">CENTRES D'INTÉRÊTS</h2>
+                <h2 class="section-title" data-lang="en">INTERESTS</h2>
                 <div class="interests">
-                    <div class="interest-item"><div class="interest-icon">🏃‍♂️</div><div>Sport</div></div>
-                    <div class="interest-item"><div class="interest-icon">🌱</div><div>Jardinage</div></div>
-                    <div class="interest-item"><div class="interest-icon">💻</div><div>High-Tech</div></div>
-                    <div class="interest-item"><div class="interest-icon">🎮</div><div>Jeux-Vidéos</div></div>
-                    <div class="interest-item"><div class="interest-icon">🎨</div><div>Infographie</div></div>
+                    <div class="interest-item"><div class="interest-icon">🏃‍♂️</div><div data-lang="fr">Sport</div><div data-lang="en">Sports</div></div>
+                    <div class="interest-item"><div class="interest-icon">🌱</div><div data-lang="fr">Jardinage</div><div data-lang="en">Gardening</div></div>
+                    <div class="interest-item"><div class="interest-icon">💻</div><div data-lang="fr">High-Tech</div><div data-lang="en">Tech</div></div>
+                    <div class="interest-item"><div class="interest-icon">🎮</div><div data-lang="fr">Jeux-Vidéos</div><div data-lang="en">Video Games</div></div>
+                    <div class="interest-item"><div class="interest-icon">🎨</div><div data-lang="fr">Infographie</div><div data-lang="en">Digital Art</div></div>
                 </div>
             </div>
         </div>
@@ -683,26 +831,55 @@
             
             // Gestion du profil intro en mode responsive
             const profileIntroHeader = document.querySelector('.profile-intro-header');
-            const profileIntro = document.querySelector('.profile-intro');
+            const profileIntro = document.querySelectorAll('.profile-intro');
             
             // Fonction pour vérifier la taille d'écran et mettre à jour l'affichage
             function checkScreenSize() {
                 if (window.innerWidth <= 900) {
                     // En mode mobile, la section est fermée par défaut
                     profileIntroHeader.classList.remove('active');
-                    profileIntro.classList.remove('active');
+                    profileIntro.forEach(intro => intro.classList.remove('active'));
                 } else {
                     // En mode desktop, la section est ouverte par défaut
                     profileIntroHeader.classList.add('active');
-                    profileIntro.classList.add('active');
+                    profileIntro.forEach(intro => intro.classList.add('active'));
                 }
             }
             
             // Ajouter l'événement de clic sur le header de la bio
             profileIntroHeader.addEventListener('click', function() {
                 this.classList.toggle('active');
-                profileIntro.classList.toggle('active');
+                profileIntro.forEach(intro => intro.classList.toggle('active'));
             });
+            
+            // Gestion du changement de langue
+            const languageSwitch = document.getElementById('languageSwitch');
+            let currentLang = 'fr'; // Langue par défaut
+            
+            // Fonction pour changer la langue
+            function switchLanguage() {
+                // Changer la langue courante
+                currentLang = currentLang === 'fr' ? 'en' : 'fr';
+                
+                // Mettre à jour l'attribut lang de l'élément html
+                document.documentElement.lang = currentLang;
+                
+                // Cacher tous les éléments qui ne sont pas dans la langue actuelle
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    if (el.dataset.lang === currentLang) {
+                        el.style.display = '';
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Initialiser l'affichage de la langue par défaut
+            switchLanguage();
+            switchLanguage(); // Revenir au français car l'initialisation passe en anglais
+            
+            // Ajouter l'événement de clic sur le bouton de changement de langue
+            languageSwitch.addEventListener('click', switchLanguage);
             
             // Exécuter au chargement
             checkScreenSize();
