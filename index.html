@@ -28,10 +28,9 @@
         header {grid-column:1/-1; background:linear-gradient(135deg,var(--primary-dark),var(--primary)); color:white; padding:15px 25px; position:relative; overflow:hidden;}
         header::before {content:''; position:absolute; top:-50%; right:-50%; width:100%; height:200%; background:linear-gradient(135deg,transparent,rgba(255,255,255,.1)); transform:rotate(45deg); z-index:0;}
         .header-content {display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; position:relative; z-index:1; margin-bottom:10px;}
-        .profile-info {max-width:75%;}
         .profile-name h1 {font-size:2.2rem; font-weight:700; margin-bottom:3px; letter-spacing:-.5px;}
         .profile-title {font-size:1rem; font-weight:500; margin-bottom:6px; opacity:.9; letter-spacing:1px;}
-        .profile-intro {font-weight:300; line-height:1.4; max-width:600px; font-size:.9rem;}
+        .profile-intro {font-weight:300; line-height:1.4; font-size:.9rem; text-align: justify;}
         
         /* Contact Info */
         .contact-info {display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;}
