@@ -29,29 +29,14 @@
         header::before {content:''; position:absolute; top:-50%; right:-50%; width:100%; height:200%; background:linear-gradient(135deg,transparent,rgba(255,255,255,.1)); transform:rotate(45deg); z-index:0;}
         .header-content {display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; position:relative; z-index:1; margin-bottom:10px;}
         .profile-name h1 {font-size:2.2rem; font-weight:700; margin-bottom:3px; letter-spacing:-.5px;}
-        .profile-title {font-weight:500; margin-bottom:6px; opacity:.9; letter-spacing:1px;}
-        .profile-intro {font-weight:300; line-height:1.4; font-size:.9rem; text-align: justify;}
+        .profile-title {font-size:1rem; font-weight:500; margin-bottom:6px; opacity:.9; letter-spacing:1px;}
         
-        /* Collapsible elements */
-        .collapsible-trigger {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .collapsible-content {
-            transition: max-height 0.3s ease;
-            overflow: hidden;
-        }
-        .collapsible-icon {
-            transition: transform 0.3s ease;
-        }
-        .collapsible-trigger.collapsed .collapsible-icon {
-            transform: rotate(-180deg);
-        }
-        .collapsible-trigger.collapsed + .collapsible-content {
-            max-height: 0 !important;
-        }
+        /* Collapsible Bio Section */
+        .profile-intro-section {margin-top:5px; position:relative;}
+        .profile-intro-header {display:none; cursor:pointer; font-weight:500; margin-bottom:5px; align-items:center;}
+        .profile-intro-header svg {width:16px; height:16px; margin-left:5px; transition:transform 0.3s ease;}
+        .profile-intro-header.active svg {transform:rotate(180deg);}
+        .profile-intro {font-weight:300; line-height:1.4; font-size:.9rem; text-align: justify; overflow:hidden; transition:max-height 0.5s ease;}
         
         /* Contact Info */
         .contact-info {display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;}
@@ -159,72 +144,10 @@
             .timeline-date {margin-top:10px;}
             .badge-container {flex-direction:column; gap:8px;}
             
-            /* Mobile dropdown styles */
-            .profile-intro-container {
-                margin-top: 10px;
-            }
-            .profile-intro-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                background-color: rgba(255,255,255,0.1);
-                padding: 8px 12px;
-                border-radius: 5px;
-                margin-bottom: 8px;
-                cursor: pointer;
-            }
-            .profile-intro-toggle-icon svg {
-                width: 18px;
-                height: 18px;
-                fill: white;
-            }
-            
-            /* Mobile skills sections */
-            .skills-header {
-                cursor: pointer;
-                margin-bottom: 0;
-            }
-            .skill-content {
-                max-height: 500px;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                padding: 0 0 10px 0;
-            }
-            .mobile-dropdown-icon {
-                display: inline-block;
-                margin-left: auto;
-            }
-            .mobile-dropdown-icon svg {
-                width: 18px;
-                height: 18px;
-                fill: white;
-                transition: transform 0.3s ease;
-            }
-            .skills-header.collapsed .mobile-dropdown-icon svg {
-                transform: rotate(-180deg);
-            }
-            .skills-header.collapsed + .skill-content {
-                max-height: 0;
-                padding: 0;
-            }
-        }
-        
-        /* Masquer les éléments de toggle en version desktop */
-        @media screen and (min-width:901px) {
-            .profile-intro-toggle {
-                display: none;
-            }
-            .mobile-dropdown-icon {
-                display: none;
-            }
-            /* Toujours afficher le contenu en desktop */
-            .collapsible-content {
-                max-height: none !important;
-            }
-            .skill-content {
-                max-height: none !important;
-                padding: 0 0 10px 0 !important;
-            }
+            /* Hide profile intro on mobile by default */
+            .profile-intro-header {display:flex;}
+            .profile-intro {max-height:0;}
+            .profile-intro.active {max-height:500px;}
         }
     </style>
 </head>
@@ -236,18 +159,12 @@
                 <div class="profile-info">
                     <div class="profile-name"><h1>Alan DAMOTTE</h1></div>
                     <div class="profile-title">TEAM MANAGER – DIRECTEUR DE PROJET</div>
-                    
-                    <!-- Profile Intro Collapsible for Mobile -->
-                    <div class="profile-intro-container">
-                        <div class="profile-intro-toggle collapsible-trigger collapsed" data-mobile-only="true">
-                            <div>À propos de moi</div>
-                            <div class="profile-intro-toggle-icon collapsible-icon">
-                                <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" /></svg>
-                            </div>
+                    <div class="profile-intro-section">
+                        <div class="profile-intro-header">
+                            <span>A propos de moi</span>
+                            <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" fill="currentColor"/></svg>
                         </div>
-                        <div class="profile-intro collapsible-content">
-                            Team manager ayant fait ses preuves dans le pilotage de projets complexes et stratégiques. Je suis expérimenté dans le management d'équipe comptant jusqu'à 20 ingénieurs et en collaboration avec des équipes cross-fonctionnelles. J'aime continuer à me développer, tant sur le plan professionnel que personnel, pour atteindre de nouveaux objectifs, et m'engage dans une quête constante d'amélioration continue pour stimuler l'innovation.
-                        </div>
+                        <div class="profile-intro">Team manager ayant fait ses preuves dans le pilotage de projets complexes et stratégiques. Je suis expérimenté dans le management d'équipe comptant jusqu'à 20 ingénieurs et en collaboration avec des équipes cross-fonctionnelles. J'aime continuer à me développer, tant sur le plan professionnel que personnel, pour atteindre de nouveaux objectifs, et m'engage dans une quête constante d'amélioration continue pour stimuler l'innovation.</div>
                     </div>
                 </div>
             </div>
@@ -263,147 +180,127 @@
         <div class="sidebar">
             <h2>COMPÉTENCES</h2>
             
-            <!-- Management Skills - Collapsible for Mobile -->
+            <!-- Management Skills -->
             <div class="skills-container">
-                <div class="skills-header collapsible-trigger collapsed" data-mobile-only="true">
+                <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg></div>
                     <div class="skills-title">Management</div>
-                    <div class="mobile-dropdown-icon collapsible-icon">
-                        <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" /></svg>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Leadership et gestion des ressources humaines</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-leadership">Leadership</span>
+                        <span class="skill-badge-compact skill-leadership">Coaching</span>
+                        <span class="skill-badge-compact skill-leadership">Suivi collaborateurs</span>
+                        <span class="skill-badge-compact skill-leadership">People review</span>
+                        <span class="skill-badge-compact skill-leadership">Définition objectifs</span>
                     </div>
                 </div>
-                <div class="skill-content collapsible-content">
-                    <div class="skill-group">
-                        <div class="skill-group-header">Leadership et gestion des ressources humaines</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-leadership">Leadership</span>
-                            <span class="skill-badge-compact skill-leadership">Coaching</span>
-                            <span class="skill-badge-compact skill-leadership">Suivi collaborateurs</span>
-                            <span class="skill-badge-compact skill-leadership">People review</span>
-                            <span class="skill-badge-compact skill-leadership">Définition objectifs</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <div class="skill-group-header">Gestion stratégique</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-strategy">Revue budgétaire</span>
-                            <span class="skill-badge-compact skill-strategy">Gestion ressources</span>
-                        </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Gestion stratégique</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-strategy">Revue budgétaire</span>
+                        <span class="skill-badge-compact skill-strategy">Gestion ressources</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Project Management Skills - Collapsible for Mobile -->
+            <!-- Project Management Skills -->
             <div class="skills-container">
-                <div class="skills-header collapsible-trigger collapsed" data-mobile-only="true">
+                <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" /></svg></div>
                     <div class="skills-title">Gestion de projet</div>
-                    <div class="mobile-dropdown-icon collapsible-icon">
-                        <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" /></svg>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Planification et ressources</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-resource">Pilotage ressources</span>
+                        <span class="skill-badge-compact skill-resource">Planification</span>
                     </div>
                 </div>
-                <div class="skill-content collapsible-content">
-                    <div class="skill-group">
-                        <div class="skill-group-header">Planification et ressources</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-resource">Pilotage ressources</span>
-                            <span class="skill-badge-compact skill-resource">Planification</span>
-                        </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Relations clients</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-client">Relation client</span>
+                        <span class="skill-badge-compact skill-client">Avant-ventes</span>
                     </div>
-                    <div class="skill-group">
-                        <div class="skill-group-header">Relations clients</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-client">Relation client</span>
-                            <span class="skill-badge-compact skill-client">Avant-ventes</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <div class="skill-group-header">Méthodologie et suivi</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-method">Méthodes Agiles</span>
-                            <span class="skill-badge-compact skill-method">Suivi budgétaire</span>
-                            <span class="skill-badge-compact skill-method">Analyse technique</span>
-                        </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Méthodologie et suivi</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-method">Méthodes Agiles</span>
+                        <span class="skill-badge-compact skill-method">Suivi budgétaire</span>
+                        <span class="skill-badge-compact skill-method">Analyse technique</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Technical Skills - Collapsible for Mobile -->
+            <!-- Technical Skills -->
             <div class="skills-container">
-                <div class="skills-header collapsible-trigger collapsed" data-mobile-only="true">
+                <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg></div>
                     <div class="skills-title">Technologies</div>
-                    <div class="mobile-dropdown-icon collapsible-icon">
-                        <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" /></svg>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Langages & Frameworks</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-tech-dev">Java/Springboot</span>
+                        <span class="skill-badge-compact skill-tech-dev">REST APIs</span>
+                        <span class="skill-badge-compact skill-tech-dev">EmberJs</span>
+                        <span class="skill-badge-compact skill-tech-dev">MySQL</span>
                     </div>
                 </div>
-                <div class="skill-content collapsible-content">
-                    <div class="skill-group">
-                        <div class="skill-group-header">Langages & Frameworks</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-tech-dev">Java/Springboot</span>
-                            <span class="skill-badge-compact skill-tech-dev">REST APIs</span>
-                            <span class="skill-badge-compact skill-tech-dev">EmberJs</span>
-                            <span class="skill-badge-compact skill-tech-dev">MySQL</span>
-                        </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Outils DevOps</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-tech-devops">Git/Gitlab</span>
+                        <span class="skill-badge-compact skill-tech-devops">CI/CD</span>
+                        <span class="skill-badge-compact skill-tech-devops">Confluence</span>
+                        <span class="skill-badge-compact skill-tech-devops">Jira</span>
                     </div>
-                    <div class="skill-group">
-                        <div class="skill-group-header">Outils DevOps</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-tech-devops">Git/Gitlab</span>
-                            <span class="skill-badge-compact skill-tech-devops">CI/CD</span>
-                            <span class="skill-badge-compact skill-tech-devops">Confluence</span>
-                            <span class="skill-badge-compact skill-tech-devops">Jira</span>
-                        </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Infrastructure</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-tech-infra">Docker</span>
+                        <span class="skill-badge-compact skill-tech-infra">Cloud GCP</span>
+                        <span class="skill-badge-compact skill-tech-infra">NGINX</span>
                     </div>
-                    <div class="skill-group">
-                        <div class="skill-group-header">Infrastructure</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-tech-infra">Docker</span>
-                            <span class="skill-badge-compact skill-tech-infra">Cloud GCP</span>
-                            <span class="skill-badge-compact skill-tech-infra">NGINX</span>
-                        </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Intelligence Artificielle</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-tech-ai">GenAI/LLM/Agents</span>
                     </div>
-                    <div class="skill-group">
-                        <div class="skill-group-header">Intelligence Artificielle</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-tech-ai">GenAI/LLM/Agents</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <div class="skill-group-header">Systèmes d'exploitation</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-tech-os">Windows</span>
-                            <span class="skill-badge-compact skill-tech-os">GNU/Linux</span>
-                        </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Systèmes d'exploitation</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-tech-os">Windows</span>
+                        <span class="skill-badge-compact skill-tech-os">GNU/Linux</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Personal Skills - Collapsible for Mobile -->
+            <!-- Personal Skills -->
             <div class="skills-container">
-                <div class="skills-header collapsible-trigger collapsed" data-mobile-only="true">
+                <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" /></svg></div>
                     <div class="skills-title">Qualités personnelles</div>
-                    <div class="mobile-dropdown-icon collapsible-icon">
-                        <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" /></svg>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Compétences collaboratives</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-collab">Esprit d'équipe</span>
+                        <span class="skill-badge-compact skill-collab">Communication</span>
                     </div>
                 </div>
-                <div class="skill-content collapsible-content">
-                    <div class="skill-group">
-                        <div class="skill-group-header">Compétences collaboratives</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-collab">Esprit d'équipe</span>
-                            <span class="skill-badge-compact skill-collab">Communication</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <div class="skill-group-header">Compétences individuelles</div>
-                        <div class="skill-group-content">
-                            <span class="skill-badge-compact skill-personal">Organisation</span>
-                            <span class="skill-badge-compact skill-personal">Esprit d'analyse</span>
-                            <span class="skill-badge-compact skill-personal">Adaptabilité</span>
-                        </div>
+                <div class="skill-group">
+                    <div class="skill-group-header">Compétences individuelles</div>
+                    <div class="skill-group-content">
+                        <span class="skill-badge-compact skill-personal">Organisation</span>
+                        <span class="skill-badge-compact skill-personal">Esprit d'analyse</span>
+                        <span class="skill-badge-compact skill-personal">Adaptabilité</span>
                     </div>
                 </div>
             </div>
@@ -554,7 +451,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Timeline accordions
+            // Gestion des timeline items
             const timelineHeaders = document.querySelectorAll('.timeline-header:not(.education-header)');
             timelineHeaders.forEach(header => {
                 header.addEventListener('click', function() {
@@ -564,63 +461,34 @@
                 });
             });
             
-            // Mobile collapsible sections
-            const collapsibleTriggers = document.querySelectorAll('.collapsible-trigger');
+            // Gestion du profil intro en mode responsive
+            const profileIntroHeader = document.querySelector('.profile-intro-header');
+            const profileIntro = document.querySelector('.profile-intro');
             
-            // Function to handle resize events
-            function handleResize() {
-                const isMobile = window.innerWidth <= 900;
-                
-                collapsibleTriggers.forEach(trigger => {
-                    const isMobileOnly = trigger.dataset.mobileOnly === 'true';
-                    const content = trigger.nextElementSibling;
-                    
-                    if (content && content.classList.contains('collapsible-content')) {
-                        if (isMobile) {
-                            // En mode mobile : sections fermées
-                            if (!trigger.classList.contains('collapsed')) {
-                                trigger.classList.add('collapsed');
-                            }
-                            content.style.maxHeight = '0px';
-                        } else if (isMobileOnly) {
-                            // En mode desktop : sections ouvertes
-                            if (trigger.classList.contains('collapsed')) {
-                                trigger.classList.remove('collapsed');
-                            }
-                            content.style.maxHeight = content.scrollHeight + 'px';
-                        }
-                    }
-                });
+            // Fonction pour vérifier la taille d'écran et mettre à jour l'affichage
+            function checkScreenSize() {
+                if (window.innerWidth <= 900) {
+                    // En mode mobile, la section est fermée par défaut
+                    profileIntroHeader.classList.remove('active');
+                    profileIntro.classList.remove('active');
+                } else {
+                    // En mode desktop, la section est ouverte par défaut
+                    profileIntroHeader.classList.add('active');
+                    profileIntro.classList.add('active');
+                }
             }
             
-            // Add click event listeners to collapsible elements
-            collapsibleTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    const isMobile = window.innerWidth <= 900;
-                    
-                    // Seulement pour mobile
-                    if (trigger.dataset.mobileOnly === 'true' && !isMobile) {
-                        return;
-                    }
-                    
-                    this.classList.toggle('collapsed');
-                    const content = this.nextElementSibling;
-                    
-                    if (content && content.classList.contains('collapsible-content')) {
-                        if (this.classList.contains('collapsed')) {
-                            content.style.maxHeight = '0px';
-                        } else {
-                            content.style.maxHeight = content.scrollHeight + 'px';
-                        }
-                    }
-                });
+            // Exécuter au chargement
+            checkScreenSize();
+            
+            // Ajouter l'événement de clic sur le header de la bio
+            profileIntroHeader.addEventListener('click', function() {
+                this.classList.toggle('active');
+                profileIntro.classList.toggle('active');
             });
             
-            // Initial setup
-            handleResize();
-            
-            // Listen for window resize
-            window.addEventListener('resize', handleResize);
+            // Écouter les changements de taille de l'écran
+            window.addEventListener('resize', checkScreenSize);
         });
     </script>
 </body>
