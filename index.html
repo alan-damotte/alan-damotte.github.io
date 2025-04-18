@@ -59,7 +59,12 @@
         .skills-icon svg {width:14px; height:14px;}
         .skills-title {font-weight:600; font-size:1rem; letter-spacing:.5px;}
         
+        /* Skills Category */
+        .skills-category {margin-bottom:15px; transition:all 0.3s ease;}
+        .skills-content {max-height:none; overflow:visible;}
+        
         /* Skill Groups */
+        .skill-groups-row {display:block;}
         .skill-group {margin-bottom:8px;}
         .skill-group:last-child {margin-bottom:0;}
         .skill-group-header {font-size:.7rem; color:#666; margin-top:6px; margin-bottom:3px; border-bottom:1px dashed #ccc; padding-bottom:2px; font-weight:600;}
@@ -148,6 +153,57 @@
             .profile-intro-header {display:flex;}
             .profile-intro {max-height:0;}
             .profile-intro.active {max-height:500px;}
+            
+            /* Compact Skills Section */
+            .sidebar {padding:15px 10px;}
+            .sidebar h2 {font-size:1.2rem; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;}
+            .sidebar h2::after {content:''; border:none;}
+            
+            .skills-container {margin-bottom:10px;}
+            .skills-header {padding:5px 8px; margin-bottom:5px;}
+            .skills-icon {width:18px; height:18px;}
+            .skills-icon svg {width:10px; height:10px;}
+            .skills-title {font-size:0.85rem;}
+            
+            /* Regrouper les sous-sections sur une ligne */
+            .skill-groups-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px;
+                margin-bottom: 5px;
+            }
+            
+            .skill-group {
+                margin-bottom: 5px;
+                margin-right: 5px;
+                flex: 1 1 auto;
+                min-width: 120px;
+            }
+            
+            .skill-group-header {
+                font-size: 0.65rem;
+                margin-top: 3px;
+                margin-bottom: 2px;
+                padding: 2px 4px;
+                border-bottom: none;
+                background-color: rgba(0,0,0,0.05);
+                border-radius: 3px;
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
+            }
+            
+            .skill-badge-compact {
+                padding: 2px 5px;
+                font-size: 0.65rem;
+                margin: 1px;
+            }
+            
+            /* More compact Interests section */
+            .interest-item {padding:8px 10px;}
+            .interest-icon {font-size:1rem; margin-right:6px;}
         }
     </style>
 </head>
@@ -180,127 +236,139 @@
         <div class="sidebar">
             <h2>COMPÉTENCES</h2>
             
-            <!-- Management Skills -->
-            <div class="skills-container">
-                <div class="skills-header">
-                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg></div>
-                    <div class="skills-title">Management</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Leadership et gestion des ressources humaines</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-leadership">Leadership</span>
-                        <span class="skill-badge-compact skill-leadership">Coaching</span>
-                        <span class="skill-badge-compact skill-leadership">Suivi collaborateurs</span>
-                        <span class="skill-badge-compact skill-leadership">People review</span>
-                        <span class="skill-badge-compact skill-leadership">Définition objectifs</span>
+            <div class="skills-content">
+                <!-- Management Skills -->
+                <div class="skills-container skills-category">
+                    <div class="skills-header">
+                        <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg></div>
+                        <div class="skills-title">Management</div>
+                    </div>
+                    <div class="skill-groups-row">
+                        <div class="skill-group">
+                            <div class="skill-group-header">Leadership et RH</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-leadership">Leadership</span>
+                                <span class="skill-badge-compact skill-leadership">Coaching</span>
+                                <span class="skill-badge-compact skill-leadership">Suivi collaborateurs</span>
+                                <span class="skill-badge-compact skill-leadership">People review</span>
+                                <span class="skill-badge-compact skill-leadership">Définition objectifs</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-header">Gestion stratégique</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-strategy">Revue budgétaire</span>
+                                <span class="skill-badge-compact skill-strategy">Gestion ressources</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Gestion stratégique</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-strategy">Revue budgétaire</span>
-                        <span class="skill-badge-compact skill-strategy">Gestion ressources</span>
+                
+                <!-- Project Management Skills -->
+                <div class="skills-container skills-category">
+                    <div class="skills-header">
+                        <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" /></svg></div>
+                        <div class="skills-title">Gestion de projet</div>
+                    </div>
+                    <div class="skill-groups-row">
+                        <div class="skill-group">
+                            <div class="skill-group-header">Planification</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-resource">Pilotage ressources</span>
+                                <span class="skill-badge-compact skill-resource">Planification</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-header">Relations clients</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-client">Relation client</span>
+                                <span class="skill-badge-compact skill-client">Avant-ventes</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-header">Méthodologie</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-method">Méthodes Agiles</span>
+                                <span class="skill-badge-compact skill-method">Suivi budgétaire</span>
+                                <span class="skill-badge-compact skill-method">Analyse technique</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Project Management Skills -->
-            <div class="skills-container">
-                <div class="skills-header">
-                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" /></svg></div>
-                    <div class="skills-title">Gestion de projet</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Planification et ressources</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-resource">Pilotage ressources</span>
-                        <span class="skill-badge-compact skill-resource">Planification</span>
+                
+                <!-- Technical Skills -->
+                <div class="skills-container skills-category">
+                    <div class="skills-header">
+                        <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg></div>
+                        <div class="skills-title">Technologies</div>
+                    </div>
+                    <div class="skill-groups-row">
+                        <div class="skill-group">
+                            <div class="skill-group-header">Langages</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-tech-dev">Java/Springboot</span>
+                                <span class="skill-badge-compact skill-tech-dev">REST APIs</span>
+                                <span class="skill-badge-compact skill-tech-dev">EmberJs</span>
+                                <span class="skill-badge-compact skill-tech-dev">MySQL</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-header">DevOps</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-tech-devops">Git/Gitlab</span>
+                                <span class="skill-badge-compact skill-tech-devops">CI/CD</span>
+                                <span class="skill-badge-compact skill-tech-devops">Confluence</span>
+                                <span class="skill-badge-compact skill-tech-devops">Jira</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-groups-row">
+                        <div class="skill-group">
+                            <div class="skill-group-header">Infrastructure</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-tech-infra">Docker</span>
+                                <span class="skill-badge-compact skill-tech-infra">Cloud GCP</span>
+                                <span class="skill-badge-compact skill-tech-infra">NGINX</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-header">IA</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-tech-ai">GenAI/LLM/Agents</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-header">OS</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-tech-os">Windows</span>
+                                <span class="skill-badge-compact skill-tech-os">GNU/Linux</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Relations clients</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-client">Relation client</span>
-                        <span class="skill-badge-compact skill-client">Avant-ventes</span>
+                
+                <!-- Personal Skills -->
+                <div class="skills-container skills-category">
+                    <div class="skills-header">
+                        <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" /></svg></div>
+                        <div class="skills-title">Qualités personnelles</div>
                     </div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Méthodologie et suivi</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-method">Méthodes Agiles</span>
-                        <span class="skill-badge-compact skill-method">Suivi budgétaire</span>
-                        <span class="skill-badge-compact skill-method">Analyse technique</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Technical Skills -->
-            <div class="skills-container">
-                <div class="skills-header">
-                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg></div>
-                    <div class="skills-title">Technologies</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Langages & Frameworks</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-tech-dev">Java/Springboot</span>
-                        <span class="skill-badge-compact skill-tech-dev">REST APIs</span>
-                        <span class="skill-badge-compact skill-tech-dev">EmberJs</span>
-                        <span class="skill-badge-compact skill-tech-dev">MySQL</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Outils DevOps</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-tech-devops">Git/Gitlab</span>
-                        <span class="skill-badge-compact skill-tech-devops">CI/CD</span>
-                        <span class="skill-badge-compact skill-tech-devops">Confluence</span>
-                        <span class="skill-badge-compact skill-tech-devops">Jira</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Infrastructure</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-tech-infra">Docker</span>
-                        <span class="skill-badge-compact skill-tech-infra">Cloud GCP</span>
-                        <span class="skill-badge-compact skill-tech-infra">NGINX</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Intelligence Artificielle</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-tech-ai">GenAI/LLM/Agents</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Systèmes d'exploitation</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-tech-os">Windows</span>
-                        <span class="skill-badge-compact skill-tech-os">GNU/Linux</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Personal Skills -->
-            <div class="skills-container">
-                <div class="skills-header">
-                    <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" /></svg></div>
-                    <div class="skills-title">Qualités personnelles</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Compétences collaboratives</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-collab">Esprit d'équipe</span>
-                        <span class="skill-badge-compact skill-collab">Communication</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">Compétences individuelles</div>
-                    <div class="skill-group-content">
-                        <span class="skill-badge-compact skill-personal">Organisation</span>
-                        <span class="skill-badge-compact skill-personal">Esprit d'analyse</span>
-                        <span class="skill-badge-compact skill-personal">Adaptabilité</span>
+                    <div class="skill-groups-row">
+                        <div class="skill-group">
+                            <div class="skill-group-header">Collaboratives</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-collab">Esprit d'équipe</span>
+                                <span class="skill-badge-compact skill-collab">Communication</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-header">Individuelles</div>
+                            <div class="skill-group-content">
+                                <span class="skill-badge-compact skill-personal">Organisation</span>
+                                <span class="skill-badge-compact skill-personal">Esprit d'analyse</span>
+                                <span class="skill-badge-compact skill-personal">Adaptabilité</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -478,14 +546,14 @@
                 }
             }
             
-            // Exécuter au chargement
-            checkScreenSize();
-            
             // Ajouter l'événement de clic sur le header de la bio
             profileIntroHeader.addEventListener('click', function() {
                 this.classList.toggle('active');
                 profileIntro.classList.toggle('active');
             });
+            
+            // Exécuter au chargement
+            checkScreenSize();
             
             // Écouter les changements de taille de l'écran
             window.addEventListener('resize', checkScreenSize);
