@@ -53,7 +53,7 @@
         .contact-icon {margin-right:6px;}
         .contact-icon svg {width:14px; height:14px; fill:currentColor;}
         
-        /* Language Switch Button */
+        /* Language Toggle Switch - New Style */
         .language-switch {
             position: absolute;
             top: 15px;
@@ -61,29 +61,69 @@
             z-index: 10;
             display: flex;
             align-items: center;
-            background-color: rgba(255,255,255,0.2);
+            background-color: rgba(255,255,255,0.15);
             color: white;
             border: none;
-            border-radius: 20px;
-            padding: 6px 12px;
+            border-radius: 30px;
+            padding: 4px;
             cursor: pointer;
             font-weight: 500;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
+            width: 80px;
+            height: 36px;
+            justify-content: space-between;
         }
         
         .language-switch:hover {
-            background-color: rgba(255,255,255,0.3);
+            background-color: rgba(255,255,255,0.25);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         
-        .language-switch svg {
-            width: 18px;
-            height: 18px;
-            margin-right: 6px;
-            fill: currentColor;
+        .language-switch .language-option {
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 28px;
+            width: 36px;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        
+        .language-switch .toggle-slider {
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            height: 28px;
+            width: 36px;
+            background-color: var(--primary-dark);
+            border-radius: 24px;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        
+        .language-switch[data-active="en"] .toggle-slider {
+            transform: translateX(36px);
+        }
+        
+        .language-switch[data-active="fr"] .fr {
+            color: white;
+        }
+        
+        .language-switch[data-active="fr"] .en {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .language-switch[data-active="en"] .fr {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .language-switch[data-active="en"] .en {
+            color: white;
         }
         
         /* Sidebar */
@@ -384,31 +424,38 @@
                 padding:20px 15px;
             }
             
-            /* Language switch in mobile */
+            /* Language toggle in mobile */
             .language-switch {
                 top: 10px;
                 right: 10px;
-                padding: 4px 8px;
-                font-size: 0.8rem;
+                width: 70px;
+                height: 30px;
             }
             
-            .language-switch svg {
-                width: 14px;
-                height: 14px;
-                margin-right: 4px;
+            .language-switch .toggle-slider {
+                height: 22px;
+                width: 30px;
+            }
+            
+            .language-switch .language-option {
+                font-size: 12px;
+                height: 22px;
+                width: 30px;
+            }
+            
+            .language-switch[data-active="en"] .toggle-slider {
+                transform: translateX(32px);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Language Switch Button -->
-        <button class="language-switch" id="languageSwitch">
-            <svg viewBox="0 0 24 24">
-                <path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" />
-            </svg>
-            <span data-lang="fr">EN</span>
-            <span data-lang="en">FR</span>
+        <!-- Language Toggle Switch -->
+        <button class="language-switch" id="languageSwitch" data-active="fr">
+            <div class="toggle-slider"></div>
+            <div class="language-option fr">FR</div>
+            <div class="language-option en">EN</div>
         </button>
         
         <!-- Header -->
@@ -863,6 +910,9 @@
                 
                 // Mettre à jour l'attribut lang de l'élément html
                 document.documentElement.lang = currentLang;
+                
+                // Mettre à jour l'état visuel du toggle
+                languageSwitch.setAttribute('data-active', currentLang);
                 
                 // Cacher tous les éléments qui ne sont pas dans la langue actuelle
                 document.querySelectorAll('[data-lang]').forEach(el => {
