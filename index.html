@@ -4,60 +4,262 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alan DAMOTTE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4a8c8a;
-            --primary-light: #62a5a3;
-            --primary-dark: #366d6b;
-            --accent: #ffc12d;
-            --accent-light: #ffd15f;
-            --accent-dark: #e5a700;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --gray: #e2e8f0;
-            --text: #334155;
-            --white: #ffffff;
-            --shadow: rgba(0,0,0,.1);
+            /* Couleurs principales */
+            --primary: #009881;
+            --primary-light: #4ECDC4;
+            --primary-dark: #00796B;
+            --accent: #FF4800;
+            --accent-light: #FFAA00;
+            --light: #F8FAFB;
+            --dark: #1A1A1A;
+            --grey: #6E6E6E;
+            --grey-light: #E5E5E5;
+            --grey-dark: #4A4A4A;
+            --white: #FFFFFF;
+            
+            /* Système d'espacement */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Ombres */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            
+            /* Border radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             
             /* Nuances de la couleur principale pour les skills */
-            --skill-shade-1: #4a8c8a;
-            --skill-shade-2: #3e7977;
-            --skill-shade-3: #326766;
+            --skill-shade-1: var(--primary);
+            --skill-shade-2: var(--primary-dark);
+            --skill-shade-3: #007065;
         }
-        * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; transition:all .3s ease;}
-        body {color:var(--text); background-color:var(--light); line-height:1.6; font-size:15px;}
-        .container {max-width:1100px; margin:30px auto; display:grid; grid-template-columns:300px 1fr; background-color:var(--white); box-shadow:0 15px 35px var(--shadow); border-radius:12px; overflow:hidden; position: relative;}
+        
+        * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter', system-ui, -apple-system, sans-serif; transition:all var(--transition-normal);}
+        
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.5;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        
+        /* Comportement de défilement moderne */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Style de sélection */
+        ::selection {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .container {
+            max-width:1200px;
+            margin:25px auto;
+            display:grid;
+            grid-template-columns:280px 1fr;
+            background-color:var(--white);
+            box-shadow: var(--shadow-md);
+            border-radius: var(--radius-lg);
+            overflow:hidden;
+            position: relative;
+        }
         
         /* Header Section */
-        header {grid-column:1/-1; background:linear-gradient(135deg,var(--primary-dark),var(--primary)); color:white; padding:15px 25px; position:relative; overflow:hidden;}
-        header::before {content:''; position:absolute; top:-50%; right:-50%; width:100%; height:200%; background:linear-gradient(135deg,transparent,rgba(255,255,255,.1)); transform:rotate(45deg); z-index:0;}
-        .header-content {display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; position:relative; z-index:1; margin-bottom:10px;}
-        .profile-name h1 {font-size:2.2rem; font-weight:700; margin-bottom:3px; letter-spacing:-.5px;}
-        .profile-title {font-size:1rem; font-weight:500; margin-bottom:6px; opacity:.9; letter-spacing:1px;}
+        header {
+            grid-column:1/-1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: var(--space-sm) var(--space-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Éléments de glassmorphism */
+        .glass-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 0;
+        }
+        
+        .glass-circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: 10%;
+        }
+        
+        .glass-circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: 5%;
+        }
+        
+        .glass-pill {
+            position: absolute;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            height: 40px;
+        }
+        
+        .glass-pill-1 {
+            width: 150px;
+            top: 20%;
+            left: 15%;
+            transform: rotate(-20deg);
+        }
+        
+        .glass-pill-2 {
+            width: 90px;
+            bottom: 30%;
+            right: 10%;
+            transform: rotate(15deg);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .profile-name h1 {
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-xs);
+            color: var(--white);
+        }
+        
+        .profile-title {
+            font-size: clamp(0.85rem, 1.2vw, 1rem);
+            opacity: 0.9;
+            margin-bottom: var(--space-xs);
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
         
         /* Collapsible Bio Section */
-        .profile-intro-section {margin-top:5px; position:relative;}
-        .profile-intro-header {display:none; cursor:pointer; font-weight:500; margin-bottom:5px; align-items:center;}
-        .profile-intro-header svg {width:16px; height:16px; margin-left:5px; transition:transform 0.3s ease;}
-        .profile-intro-header.active svg {transform:rotate(180deg);}
-        .profile-intro {font-weight:300; line-height:1.4; font-size:.9rem; text-align: justify; overflow:hidden; transition:max-height 0.5s ease;}
+        .profile-intro-section {
+            margin-top: var(--space-xs);
+            position: relative;
+            max-width: 800px;
+        }
+        
+        .profile-intro-header {
+            display: none;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+            align-items: center;
+        }
+        
+        .profile-intro-header svg {
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
+            transition: transform var(--transition-normal);
+        }
+        
+        .profile-intro-header.active svg {
+            transform: rotate(180deg);
+        }
+        
+        .profile-intro {
+            font-weight: 300;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            text-align: justify;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            opacity: 0.9;
+        }
         
         /* Contact Info */
-        .contact-info {display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;}
-        .contact-item {display:flex; align-items:center; background-color:rgba(255,255,255,.15); padding:4px 8px; border-radius:20px; backdrop-filter:blur(5px); margin-right:6px; box-shadow:0 2px 4px rgba(0,0,0,.1);}
-        .contact-item, .contact-item a {transition:transform .3s ease,box-shadow .3s ease; font-size:.85rem;}
-        .contact-item:hover {transform:translateY(-3px); box-shadow:0 6px 12px rgba(0,0,0,.15); background-color:rgba(255,255,255,.25);}
-        .contact-item a {color:white; text-decoration:none;}
-        .contact-item a:hover {text-decoration:underline;}
-        .contact-icon {margin-right:6px;}
-        .contact-icon svg {width:14px; height:14px; fill:currentColor;}
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-xs);
+            position: relative;
+            z-index: 2;
+        }
         
-        /* Language Toggle Switch - New Style */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255,255,255,.15);
+            padding: 4px 10px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            margin-right: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .contact-item, .contact-item a {
+            transition: transform var(--transition-slow), box-shadow var(--transition-normal);
+            font-size: .8rem;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,.15);
+            background-color: rgba(255,255,255,.25);
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-icon {
+            margin-right: 6px;
+        }
+        
+        .contact-icon svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+        
+        /* Language Toggle Switch */
         .language-switch {
             position: absolute;
-            top: 15px;
-            right: 20px;
+            top: 12px;
+            right: 15px;
             z-index: 10;
             display: flex;
             align-items: center;
@@ -65,14 +267,15 @@
             color: white;
             border: none;
             border-radius: 30px;
-            padding: 4px;
+            padding: 3px;
             cursor: pointer;
             font-weight: 500;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            width: 80px;
-            height: 36px;
+            -webkit-backdrop-filter: blur(5px);
+            transition: all var(--transition-normal);
+            width: 70px;
+            height: 30px;
             justify-content: space-between;
         }
         
@@ -83,31 +286,31 @@
         }
         
         .language-switch .language-option {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 28px;
-            width: 36px;
+            height: 24px;
+            width: 32px;
             z-index: 2;
-            transition: color 0.3s ease;
+            transition: color var(--transition-normal);
         }
         
         .language-switch .toggle-slider {
             position: absolute;
-            left: 4px;
-            top: 4px;
-            height: 28px;
-            width: 36px;
+            left: 3px;
+            top: 3px;
+            height: 24px;
+            width: 32px;
             background-color: var(--primary-dark);
             border-radius: 24px;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform var(--transition-slow);
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
         
         .language-switch[data-active="en"] .toggle-slider {
-            transform: translateX(36px);
+            transform: translateX(32px);
         }
         
         .language-switch[data-active="fr"] .fr {
@@ -127,73 +330,97 @@
         }
         
         /* Sidebar */
-        .sidebar {background-color:var(--light); padding:25px 20px; box-shadow:inset -5px 0 15px -5px var(--shadow);}
-        .sidebar h2 {color:var(--primary); font-size:1.5rem; margin-bottom:20px; padding-bottom:8px; border-bottom:2px solid var(--primary);}
+        .sidebar {
+            background-color: var(--light);
+            padding: var(--space-sm);
+            box-shadow: inset -5px 0 15px -5px rgba(0,0,0,.1);
+        }
+        
+        .sidebar h2 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .sidebar h2::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
         
         /* Skills - Version optimisée */
         .skills-section {
-            margin-bottom:15px;
+            margin-bottom: var(--space-sm);
             position: relative;
             padding-bottom: 2px;
         }
         
         .skills-header {
-            display:flex;
-            align-items:center;
-            margin-bottom:10px;
-            background-color:rgba(74, 140, 138, 0.12);
-            padding:8px 12px;
-            border-radius:6px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            background-color: rgba(0, 152, 129, 0.1);
+            padding: 6px 10px;
+            border-radius: var(--radius-sm);
             border-left: 3px solid var(--primary);
         }
         
         .skills-icon {
-            color:var(--primary);
-            width:20px;
-            height:20px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin-right:10px;
+            color: var(--primary);
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
         }
         
         .skills-icon svg {
-            width:16px;
-            height:16px;
+            width: 14px;
+            height: 14px;
             fill: var(--primary);
         }
         
         .skills-title {
-            font-weight:600;
-            font-size:1rem;
-            color:var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
         }
         
         /* Skill Categories */
         .skill-category {
-            margin-bottom:12px;
-            padding-left: 5px;
+            margin-bottom: 10px;
+            padding-left: 3px;
         }
         
-        /* Skill Tags - Design transparent avec contour */
+        /* Skill Tags */
         .skill-tags {
-            display:flex;
-            flex-wrap:wrap;
-            gap:6px;
-            margin:3px 0 8px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin: 2px 0 6px 0;
         }
         
         .skill-tag {
-            display:inline-block;
-            font-size:0.75rem;
-            background-color:transparent;
-            padding:2px 8px;
-            border-radius:3px;
-            margin-bottom:3px;
-            font-weight:500;
+            display: inline-block;
+            font-size: 0.7rem;
+            background-color: transparent;
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin-bottom: 2px;
+            font-weight: 500;
             letter-spacing: 0.2px;
             border: 1px solid var(--primary);
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
         }
         
         .skill-tag:hover {
@@ -201,7 +428,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        /* Variantes de couleurs pour badges transparents */
+        /* Variantes de couleurs pour badges */
         .tag-management {
             color: var(--primary);
             border-color: var(--primary);
@@ -219,209 +446,466 @@
         
         /* Skill Groups */
         .skill-group {
-            margin-bottom:12px;
-            border-left: 2px solid rgba(74, 140, 138, 0.2);
-            padding-left: 8px;
+            margin-bottom: 8px;
+            border-left: 2px solid rgba(0, 152, 129, 0.2);
+            padding-left: 6px;
         }
         
         .skill-group-title {
-            font-size:0.8rem;
-            color:#444;
-            font-weight:600;
-            margin-top:3px;
-            display:inline-block;
-            padding-bottom: 3px;
+            font-size: 0.75rem;
+            color: var(--grey-dark);
+            font-weight: 600;
+            margin-top: 2px;
+            display: inline-block;
+            padding-bottom: 2px;
         }
         
         /* Main Content */
-        .main-content {padding:30px 40px;}
-        .section {margin-bottom:40px;}
-        .section-title {color:var(--primary); font-size:1.6rem; margin-bottom:25px; position:relative; display:inline-block;}
-        .section-title::after {content:''; position:absolute; left:0; bottom:-5px; width:100%; height:3px; background-color:var(--primary); border-radius:2px;}
+        .main-content {
+            padding: var(--space-md) var(--space-md);
+        }
         
-        /* Timeline */
-        .timeline-item {margin-bottom:20px; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,.1); background-color:white;}
-        .timeline-header {background-color:var(--light); padding:15px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; border-left:4px solid var(--primary); position:relative;}
-        .timeline-header:hover {background-color:rgba(74,140,138,.1);}
-        .timeline-title-wrapper {flex:1;}
-        .timeline-title {font-weight:600; font-size:1.1rem; color:var(--dark); margin-bottom:5px;}
-        .timeline-subtitle {color:var(--accent); font-weight:500; display:inline-block; margin-right:15px;}
-        .timeline-date {background-color:var(--primary); color:white; padding:5px 10px; border-radius:20px; font-size:.8rem; font-weight:500; display:inline-flex; align-items:center;}
-        .timeline-summary {margin-top:5px; font-size:.9rem; color:var(--secondary);}
-        .timeline-dropdown-icon {margin-left:15px; transition:transform .3s ease;}
-        .timeline-dropdown-icon svg {width:20px; height:20px; fill:var(--primary);}
+        .section {
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
         
-        /* Timeline Content */
-        .timeline-content {padding:0; max-height:0; overflow:hidden; transition:max-height .5s ease,padding .3s ease;}
-        .timeline-content-inner {padding:0 20px;}
-        .timeline-content.active {max-height:1000px; padding:20px;}
-        .timeline-header.active .timeline-dropdown-icon {transform:rotate(180deg);}
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
         
-        /* Badges */
-        .badge {display:inline-block; background-color:var(--accent); color:white; padding:5px 10px; border-radius:20px; font-size:.8rem; margin-top:10px; margin-right:10px; box-shadow:0 2px 4px rgba(0,0,0,.1);}
-        .badge-container {display:flex; flex-wrap:wrap; gap:8px; margin-top:15px;}
-        .badge-financial, .badge-team, .badge-career, .badge-education, .badge-major {color:white; padding:5px 10px; border-radius:20px; font-size:.8rem; font-weight:500; box-shadow:0 3px 6px rgba(0,0,0,.15); display:inline-flex; align-items:center;}
-        .badge-financial {background:linear-gradient(135deg,#2e7d32,#4caf50);}
-        .badge-team {background:linear-gradient(135deg,#1565c0,#42a5f5);}
-        .badge-career {background:linear-gradient(135deg,#c62828,#ef5350);}
-        .badge-education {background:linear-gradient(135deg,#7b1fa2,#9c27b0);}
-        .badge-major {background:linear-gradient(135deg,#ff8f00,#ffb300);}
-        .badge-inline {margin-top:10px; margin-right:8px; display:inline-flex;}
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -0.2rem;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
         
-        /* Interests */
-        .interests {display:flex; flex-wrap:wrap; gap:15px;}
-        .interest-item {background:var(--white); border:2px solid var(--primary); color:var(--primary); padding:12px 15px; border-radius:8px; font-weight:500; display:flex; align-items:center; transition:all .3s ease; box-shadow:0 4px 6px rgba(0,0,0,.05);}
-        .interest-item:hover {background:var(--primary); color:white; transform:translateY(-5px) rotate(2deg); box-shadow:0 8px 15px rgba(0,0,0,.1);}
-        .interest-icon {font-size:1.3rem; margin-right:8px;}
+        /* Timeline moderne et compacte */
+        .timeline-wrapper {
+            position: relative;
+            padding: var(--space-xs) 0;
+            margin-top: var(--space-xs);
+        }
+        
+        .timeline-track {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 25px;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            transform: translateX(-50%);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .timeline-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: var(--primary-dark);
+            transition: height 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .timeline-items {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: var(--space-sm);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 25px;
+            top: 0;
+            transform: translate(-50%, 0);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 0 0 4px rgba(0, 152, 129, 0.1);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .timeline-item:hover .timeline-dot {
+            transform: translate(-50%, 0) scale(1.1);
+            box-shadow: 0 0 0 6px rgba(0, 152, 129, 0.1);
+        }
+        
+        .timeline-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            transition: all var(--transition-normal);
+        }
+        
+        .timeline-item:hover .timeline-icon {
+            transform: scale(1.2) rotate(360deg);
+        }
+        
+        .timeline-content {
+            background: var(--white);
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .timeline-date {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .timeline-date::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+        
+        .timeline-subtitle {
+            color: var(--grey-dark);
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+        
+        .timeline-description {
+            font-size: 0.85rem;
+            color: var(--grey);
+            line-height: 1.5;
+            margin-bottom: 0.4rem;
+        }
         
         /* Bullet Lists */
-        .bullet-list {list-style:none; padding-left:0; margin-bottom:15px;}
-        .bullet-list li {position:relative; padding-left:28px; margin-bottom:12px; line-height:1.5;}
-        .bullet-list li:before {content:''; position:absolute; left:0; top:6px; width:8px; height:8px; background-color:var(--primary); border-radius:50%; box-shadow:0 2px 4px rgba(0,0,0,.1); transition:all .2s ease;}
-        .bullet-list li:hover:before {transform:scale(1.5); background-color:var(--accent);}
-        .bullet-list li:last-child {margin-bottom:0;}
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.4rem 0 0.6rem 0;
+        }
         
-        /* Education special styles */
-        .education-header {padding:20px; cursor:default;}
-        .education-header:hover {background-color:var(--light);}
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 4px;
+            line-height: 1.4;
+            color: var(--grey-dark);
+            font-size: 0.8rem;
+        }
+        
+        .bullet-list li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,.1);
+            transition: all 0.2s ease;
+        }
+        
+        .bullet-list li:hover:before {
+            transform: scale(1.3);
+            background-color: var(--primary-light);
+        }
+        
+        /* Badges */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .badge-financial, .badge-team, .badge-career, .badge-education, .badge-major {
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,.15);
+            display: inline-flex;
+            align-items: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .badge-financial:hover, .badge-team:hover, .badge-career:hover, .badge-education:hover, .badge-major:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,.2);
+        }
+        
+        .badge-financial {
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+        }
+        
+        .badge-team {
+            background: linear-gradient(135deg, #1565c0, #42a5f5);
+        }
+        
+        .badge-career {
+            background: linear-gradient(135deg, #c62828, #ef5350);
+        }
+        
+        .badge-education {
+            background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+        }
+        
+        .badge-major {
+            background: linear-gradient(135deg, #ff8f00, #ffb300);
+        }
+        
+        /* Education timeline compacte */
+        .education-content {
+            background: linear-gradient(135deg, rgba(0, 152, 129, 0.05) 0%, rgba(78, 205, 196, 0.05) 100%);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm);
+            margin-top: var(--space-xs);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .education-bg {
+            position: absolute;
+            z-index: 0;
+        }
+        
+        .education-bg-1 {
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 152, 129, 0.05) 0%, rgba(78, 205, 196, 0.05) 100%);
+        }
+        
+        .education-bg-2 {
+            bottom: -40px;
+            left: -40px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 152, 129, 0.05) 0%, rgba(78, 205, 196, 0.05) 100%);
+        }
+        
+        .education-content-inner {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .education-date {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .education-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .education-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+        
+        .education-description {
+            color: var(--grey-dark);
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        /* Interests */
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+        
+        .interest-item {
+            background: var(--white);
+            color: var(--primary);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 152, 129, 0.2);
+            font-size: 0.85rem;
+        }
+        
+        .interest-item:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: var(--shadow-md);
+            border-color: transparent;
+        }
+        
+        .interest-icon {
+            font-size: 1.1rem;
+            margin-right: 8px;
+        }
         
         /* Responsive */
-        @media screen and (max-width:900px) {
-            .container {grid-template-columns:1fr; width:95%;}
-            .header-content {flex-direction:column;}
-            .profile-info {max-width:100%; margin-bottom:20px;}
-            .timeline-header {flex-wrap:wrap;}
-            .timeline-date {margin-top:10px;}
-            .badge-container {flex-direction:column; gap:8px;}
+        @media screen and (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                width: 95%;
+                margin: 15px auto;
+            }
+            
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .profile-info {
+                max-width: 100%;
+                margin-bottom: 15px;
+            }
             
             /* Hide profile intro on mobile by default */
-            .profile-intro-header {display:flex;}
-            .profile-intro {max-height:0;}
-            .profile-intro.active {max-height:500px;}
+            .profile-intro-header {
+                display: flex;
+            }
             
-            /* Compact Skills Section - Version ultra-condensée */
-            .sidebar {padding:12px 8px 8px 8px;}
+            .profile-intro {
+                max-height: 0;
+            }
+            
+            .profile-intro.active {
+                max-height: 500px;
+            }
+            
+            /* Compact Skills Section */
+            .sidebar {
+                padding: 12px 10px;
+            }
+            
             .sidebar h2 {
-                font-size:1.1rem; 
-                margin-bottom:6px;
-                padding-bottom:4px;
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+                padding-bottom: 4px;
             }
             
             .skills-section {
-                margin-bottom:2px;
-                padding-bottom:0;
+                margin-bottom: 8px;
             }
             
             .skills-header {
-                padding:4px 6px; 
-                margin-bottom:2px;
-                border-left-width: 2px;
-            }
-            
-            .skills-icon {
-                width:14px; 
-                height:14px;
-                margin-right:6px;
-            }
-            
-            .skills-icon svg {
-                width:10px; 
-                height:10px;
+                padding: 4px 6px;
+                margin-bottom: 6px;
             }
             
             .skills-title {
-                font-size:0.8rem;
+                font-size: 0.8rem;
             }
             
-            .skill-category {
-                margin-bottom:0;
-                padding-left: 3px;
-            }
-            
-            /* Compacter les titres des groupes */
             .skill-group {
-                margin-bottom:2px;
-                padding-left:4px;
-                border-left-width:1px;
+                margin-bottom: 6px;
             }
             
             .skill-group-title {
-                font-size:0.65rem;
-                margin-bottom:1px;
-                margin-top:1px;
-                padding-bottom:0;
+                font-size: 0.7rem;
             }
             
             .skill-tag {
-                font-size:0.6rem;
-                padding:0px 4px;
-                margin-bottom:1px;
-                line-height:1.4;
-                border-width:1px;
+                font-size: 0.65rem;
+                padding: 1px 4px;
             }
             
-            /* Organisation en colonnes pour mobile */
-            .skill-groups-row {
-                display:flex;
-                flex-wrap:wrap;
-                gap:2px;
-                margin-bottom:2px;
+            /* Timeline adjustments */
+            .timeline-dot {
+                width: 30px;
+                height: 30px;
             }
             
-            .skill-groups-row .skill-group {
-                flex:1 1 40%;
-                min-width:100px;
-                margin-right:3px;
-            }
-            
-            .skill-tags {
-                gap:2px;
-                margin:1px 0 2px 0;
-            }
-            
-            /* More compact Interests section */
-            .interest-item {padding:6px 8px;}
-            .interest-icon {font-size:0.9rem; margin-right:5px;}
-            
-            /* Ajuster les éléments du bullet-list pour mobile */
-            .bullet-list li {
-                padding-left:20px;
-                margin-bottom:8px;
-            }
-            
-            .bullet-list li:before {
-                top:8px;
-                width:6px;
-                height:6px;
-            }
-            
-            /* Ajustements supplémentaires pour la section skills */
-            .skill-section:last-child {
-                margin-bottom:0;
-            }
-            
-            /* Réduire l'espace entre les sections */
-            .section {
-                margin-bottom:25px;
-            }
-            
-            /* Section title plus compacte */
-            .section-title {
-                font-size:1.3rem;
-                margin-bottom:15px;
-            }
-            
-            /* Timeline plus compacte */
-            .timeline-header {
-                padding:12px 15px;
+            .timeline-icon {
+                font-size: 1rem;
             }
             
             .timeline-title {
-                font-size:1rem;
+                font-size: 1rem;
+            }
+            
+            .timeline-date {
+                font-size: 0.85rem;
             }
             
             .main-content {
-                padding:20px 15px;
+                padding: 15px;
             }
             
             /* Language toggle in mobile */
@@ -446,6 +930,59 @@
             .language-switch[data-active="en"] .toggle-slider {
                 transform: translateX(32px);
             }
+            
+            /* Organisation en colonnes pour mobile */
+            .skill-groups-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2px;
+                margin-bottom: 2px;
+            }
+            
+            .skill-groups-row .skill-group {
+                flex: 1 1 40%;
+                min-width: 100px;
+                margin-right: 3px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .timeline-item {
+                padding-left: 40px;
+            }
+            
+            .timeline-content {
+                padding: 10px;
+            }
+            
+            .bullet-list li {
+                padding-left: 16px;
+                margin-bottom: 3px;
+                font-size: 0.75rem;
+            }
+            
+            .badge-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .interests {
+                gap: 8px;
+            }
+            
+            .interest-item {
+                padding: 6px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .interest-icon {
+                font-size: 0.9rem;
+                margin-right: 6px;
+            }
         }
     </style>
 </head>
@@ -460,6 +997,12 @@
         
         <!-- Header -->
         <header>
+            <!-- Glass morphism elements -->
+            <div class="glass-circle glass-circle-1"></div>
+            <div class="glass-circle glass-circle-2"></div>
+            <div class="glass-pill glass-pill-1"></div>
+            <div class="glass-pill glass-pill-2"></div>
+            
             <div class="header-content">
                 <div class="profile-info">
                     <div class="profile-name"><h1>Alan DAMOTTE</h1></div>
@@ -489,7 +1032,7 @@
             <h2 data-lang="fr">COMPÉTENCES</h2>
             <h2 data-lang="en">SKILLS</h2>
             
-            <!-- Management Skills - Version optimisée -->
+            <!-- Management Skills -->
             <div class="skills-section">
                 <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg></div>
@@ -534,7 +1077,7 @@
                 </div>
             </div>
             
-            <!-- Project Management Skills - Version optimisée -->
+            <!-- Project Management Skills -->
             <div class="skills-section">
                 <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z" /></svg></div>
@@ -579,7 +1122,7 @@
                 </div>
             </div>
             
-            <!-- Technical Skills - Version optimisée -->
+            <!-- Technical Skills -->
             <div class="skills-section">
                 <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" /></svg></div>
@@ -635,7 +1178,7 @@
                 </div>
             </div>
             
-            <!-- Personal Skills - Version optimisée -->
+            <!-- Personal Skills -->
             <div class="skills-section">
                 <div class="skills-header">
                     <div class="skills-icon"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,10.5A1.5,1.5 0 0,1 13.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,12A1.5,1.5 0 0,1 12,10.5M7.5,10.5A1.5,1.5 0 0,1 9,12A1.5,1.5 0 0,1 7.5,13.5A1.5,1.5 0 0,1 6,12A1.5,1.5 0 0,1 7.5,10.5M16.5,10.5A1.5,1.5 0 0,1 18,12A1.5,1.5 0 0,1 16.5,13.5A1.5,1.5 0 0,1 15,12A1.5,1.5 0 0,1 16.5,10.5Z" /></svg></div>
@@ -683,138 +1226,127 @@
             <div class="section">
                 <h2 class="section-title" data-lang="fr">EXPÉRIENCE PROFESSIONNELLE</h2>
                 <h2 class="section-title" data-lang="en">PROFESSIONAL EXPERIENCE</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-header active">
-                            <div class="timeline-title-wrapper">
+                
+                <!-- Timeline moderne et condensée -->
+                <div class="timeline-wrapper">
+                    <div class="timeline-track">
+                        <div class="timeline-progress" id="timeline-progress"></div>
+                    </div>
+                    
+                    <div class="timeline-items">
+                        <div class="timeline-item" id="experience-1">
+                            <div class="timeline-dot">
+                                <i class="timeline-icon fas fa-users"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-date" data-lang="fr">MAI 2021 - PRÉSENT</div>
+                                <div class="timeline-date" data-lang="en">MAY 2021 - PRESENT</div>
+                                <div class="timeline-subtitle">WORLDLINE</div>
                                 <div class="timeline-title" data-lang="fr">TEAM MANAGER – OPEN BANKING</div>
                                 <div class="timeline-title" data-lang="en">TEAM MANAGER – OPEN BANKING</div>
-                                <div>
-                                    <span class="timeline-subtitle">WORLDLINE</span>
-                                    <span class="timeline-date" data-lang="fr">MAI 2021 - PRÉSENT</span>
-                                    <span class="timeline-date" data-lang="en">MAY 2021 - PRESENT</span>
-                                </div>
-                                <div class="timeline-summary" data-lang="fr">Direction d'une équipe de 20 collaborateurs et gestion de projet SaaS pour 25 clients internationaux.</div>
-                                <div class="timeline-summary" data-lang="en">Leading a team of 20 employees and SaaS project management for 25 international clients.</div>
-                            </div>
-                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
-                        </div>
-                        <div class="timeline-content active">
-                            <div class="timeline-content-inner">
+                                <div class="timeline-description" data-lang="fr">Direction d'une équipe de 20 collaborateurs et gestion de projet SaaS pour 25 clients internationaux.</div>
+                                <div class="timeline-description" data-lang="en">Leading a team of 20 employees and SaaS project management for 25 international clients.</div>
+                                
                                 <ul class="bullet-list" data-lang="fr">
                                     <li>Direction de projet sur des enjeux de mise en conformité PSD2 (Produit fourni en mode SaaS) – Build & Run pour 25 clients internationaux</li>
-                                    <li>Gestion du budget et des ressources – Avant-vente – Définition de la stratégie technico-fonctionnelle du produit – Suivi de l'évolution de la réglementation (dont PSD3 / PSR1 / Instant Payment - Verification of Payee)</li>
-                                    <li>Management opérationnel et hiérarchique d'une équipe de 20 collaborateurs – Recrutement – Plan de formation – Entretiens de performances et suivi de carrière – People review / Salary review – Coaching</li>
-                                    <li>Conduite de projet de migration Cloud (Google Cloud Platform) – Démarche SRE – Amélioration continue – Conduite du changement et transition DevOps / FinOps</li>
-                                    <li>Référent du département sur l'utilisation de l'IA au sein des produits et des équipes - Pilotage de la mise en place d'un agent IA dédié à l'équipe projet</li>
+                                    <li>Gestion du budget et des ressources – Avant-vente – Définition de la stratégie technico-fonctionnelle du produit – Suivi de l'évolution de la réglementation</li>
+                                    <li>Management opérationnel et hiérarchique d'une équipe de 20 collaborateurs – Recrutement – Suivi de carrière – People review / Salary review</li>
+                                    <li>Conduite de projet de migration Cloud (Google Cloud Platform) – Démarche SRE – Amélioration continue – Transition DevOps / FinOps</li>
+                                    <li>Référent du département sur l'utilisation de l'IA au sein des produits et des équipes</li>
                                 </ul>
                                 <ul class="bullet-list" data-lang="en">
                                     <li>Project direction on PSD2 compliance issues (Product provided in SaaS mode) – Build & Run for 25 international clients</li>
-                                    <li>Budget and resource management – Pre-sales – Definition of the product's technical and functional strategy – Monitoring regulatory developments (including PSD3 / PSR1 / Instant Payment - Verification of Payee)</li>
-                                    <li>Operational and hierarchical management of a team of 20 employees – Recruitment – Training plan – Performance reviews and career development – People review / Salary review – Coaching</li>
-                                    <li>Cloud migration project management (Google Cloud Platform) – SRE approach – Continuous improvement – Change management and DevOps / FinOps transition</li>
-                                    <li>Department reference on the use of AI within products and teams - Managing the implementation of an AI agent dedicated to the project team</li>
+                                    <li>Budget and resource management – Pre-sales – Definition of the product's technical and functional strategy – Monitoring regulations</li>
+                                    <li>Operational and hierarchical management of a team of 20 employees – Recruitment – Career development – People/Salary review</li>
+                                    <li>Cloud migration project management (Google Cloud Platform) – SRE approach – Continuous improvement – DevOps / FinOps transition</li>
+                                    <li>Department reference on the use of AI within products and teams</li>
                                 </ul>
+                                
                                 <div class="badge-container" data-lang="fr">
-                                    <span class="badge-financial"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M11.8,10.9c-2.27-0.59-3-1.2-3-2.15c0-1.09,1.01-1.85,2.7-1.85c1.78,0,2.44,0.85,2.5,2.1h2.21 c-0.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94,0.42-3.5,1.68-3.5,3.61c0,2.31,1.91,3.46,4.7,4.13c2.5,0.6,3,1.48,3,2.41 c0,0.69-0.49,1.79-2.7,1.79c-2.06,0-2.87-0.92-2.98-2.1H6.32c0.12,2.19,1.76,3.42,3.68,3.83V21h3v-2.15 c1.95-0.37,3.5-1.5,3.5-3.55C16.5,12.46,14.07,11.49,11.8,10.9z"></path></svg>CA: 3M€ • Marge: +20% en 2 ans</span>
-                                    <span class="badge-team"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.55,12H13V7H16V10.43C16.37,10.16 16.81,10 17.25,10C18.5,10 19.5,11 19.5,12.25C19.5,13.5 18.5,14.5 17.25,14.5C17,14.5 16.75,14.43 16.5,14.32V14.5H13.5V12.5H15.5V12.72C15.76,12.89 16,13 16.25,13C17.07,13 17.75,12.32 17.75,11.5C17.75,10.68 17.07,10 16.25,10H16.25L17,10M11,19.5V18H9V11A2,2 0 0,0 7,9H5V18H3V7H7A4,4 0 0,1 11,11V18H9V19.5H11Z"></path></svg>Satisfaction d'équipe: +10% en 2 ans</span>
-                                    <span class="badge-career"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"></path></svg>Identifié parmi les Talents Worldline 2022, 2023 et 2024</span>
+                                    <span class="badge-financial"><i class="fas fa-chart-line" style="margin-right:6px;"></i>CA: 3M€ • Marge: +20% en 2 ans</span>
+                                    <span class="badge-team"><i class="fas fa-users" style="margin-right:6px;"></i>Satisfaction d'équipe: +10% en 2 ans</span>
+                                    <span class="badge-career"><i class="fas fa-award" style="margin-right:6px;"></i>Identifié parmi les Talents Worldline 2022-2024</span>
                                 </div>
                                 <div class="badge-container" data-lang="en">
-                                    <span class="badge-financial"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M11.8,10.9c-2.27-0.59-3-1.2-3-2.15c0-1.09,1.01-1.85,2.7-1.85c1.78,0,2.44,0.85,2.5,2.1h2.21 c-0.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94,0.42-3.5,1.68-3.5,3.61c0,2.31,1.91,3.46,4.7,4.13c2.5,0.6,3,1.48,3,2.41 c0,0.69-0.49,1.79-2.7,1.79c-2.06,0-2.87-0.92-2.98-2.1H6.32c0.12,2.19,1.76,3.42,3.68,3.83V21h3v-2.15 c1.95-0.37,3.5-1.5,3.5-3.55C16.5,12.46,14.07,11.49,11.8,10.9z"></path></svg>Revenue: €3M • Margin: +20% in 2 years</span>
-                                    <span class="badge-team"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.55,12H13V7H16V10.43C16.37,10.16 16.81,10 17.25,10C18.5,10 19.5,11 19.5,12.25C19.5,13.5 18.5,14.5 17.25,14.5C17,14.5 16.75,14.43 16.5,14.32V14.5H13.5V12.5H15.5V12.72C15.76,12.89 16,13 16.25,13C17.07,13 17.75,12.32 17.75,11.5C17.75,10.68 17.07,10 16.25,10H16.25L17,10M11,19.5V18H9V11A2,2 0 0,0 7,9H5V18H3V7H7A4,4 0 0,1 11,11V18H9V19.5H11Z"></path></svg>Team satisfaction: +10% in 2 years</span>
-                                    <span class="badge-career"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"></path></svg>Identified among Worldline Talents 2022, 2023 and 2024</span>
+                                    <span class="badge-financial"><i class="fas fa-chart-line" style="margin-right:6px;"></i>Revenue: €3M • Margin: +20% in 2 years</span>
+                                    <span class="badge-team"><i class="fas fa-users" style="margin-right:6px;"></i>Team satisfaction: +10% in 2 years</span>
+                                    <span class="badge-career"><i class="fas fa-award" style="margin-right:6px;"></i>Worldline Talents 2022-2024</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-title-wrapper">
+                        
+                        <div class="timeline-item" id="experience-2">
+                            <div class="timeline-dot">
+                                <i class="timeline-icon fas fa-tasks"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2019 - 2021</div>
+                                <div class="timeline-subtitle">WORLDLINE</div>
                                 <div class="timeline-title" data-lang="fr">CHEF DE PROJET – OPEN BANKING</div>
                                 <div class="timeline-title" data-lang="en">PROJECT MANAGER – OPEN BANKING</div>
-                                <div>
-                                    <span class="timeline-subtitle">WORLDLINE</span>
-                                    <span class="timeline-date">2019 - 2021</span>
-                                </div>
-                                <div class="timeline-summary" data-lang="fr">Gestion de projet et relation client pour un portefeuille de 10 clients internationaux.</div>
-                                <div class="timeline-summary" data-lang="en">Project management and client relationship for a portfolio of 10 international clients.</div>
-                            </div>
-                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-content-inner">
+                                <div class="timeline-description" data-lang="fr">Gestion de projet et relation client pour un portefeuille de 10 clients internationaux.</div>
+                                <div class="timeline-description" data-lang="en">Project management and client relationship for a portfolio of 10 international clients.</div>
+                                
                                 <ul class="bullet-list" data-lang="fr">
                                     <li>Gestion de projet - Relation client et pilotage d'un portefeuille de 10 clients internationaux</li>
-                                    <li>Suivi des déploiements, des lots de développements spécifiques et de la recette – Participation aux enjeux d'exploitation de la solution et support de recette et production</li>
+                                    <li>Suivi des déploiements, des lots de développements spécifiques et de la recette</li>
                                     <li>Pilotage de l'industrialisation et de l'amélioration des processus d'exploitation</li>
                                     <li>Implication dans la stratégie produit</li>
                                 </ul>
                                 <ul class="bullet-list" data-lang="en">
                                     <li>Project management - Client relationship and oversight of a portfolio of 10 international clients</li>
-                                    <li>Tracking of deployments, specific development packages and testing - Participation in solution operations and testing and production support</li>
+                                    <li>Tracking of deployments, specific development packages and testing</li>
                                     <li>Management of industrialization and improvement of operational processes</li>
                                     <li>Involvement in product strategy</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-title-wrapper">
+                        
+                        <div class="timeline-item" id="experience-3">
+                            <div class="timeline-dot">
+                                <i class="timeline-icon fas fa-credit-card"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2018</div>
+                                <div class="timeline-subtitle">WORLDLINE</div>
                                 <div class="timeline-title" data-lang="fr">CHEF DE PROJET – COTIZEN</div>
                                 <div class="timeline-title" data-lang="en">PROJECT MANAGER – COTIZEN</div>
-                                <div>
-                                    <span class="timeline-subtitle">WORLDLINE</span>
-                                    <span class="timeline-date">2018</span>
-                                </div>
-                                <div class="timeline-summary" data-lang="fr">Gestion d'un service de paiement en ligne pour 4 grandes fédérations françaises.</div>
-                                <div class="timeline-summary" data-lang="en">Management of an online payment service for 4 major French federations.</div>
-                            </div>
-                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-content-inner">
+                                <div class="timeline-description" data-lang="fr">Gestion d'un service de paiement en ligne pour 4 grandes fédérations françaises.</div>
+                                <div class="timeline-description" data-lang="en">Management of an online payment service for 4 major French federations.</div>
+                                
                                 <ul class="bullet-list" data-lang="fr">
-                                    <li>Service de gestion des ordres de paiement en ligne pour le compte de 4 grandes fédérations françaises</li>
-                                    <li>Gestion de projet, suivi des demandes d'évolutions du service, gestion des partenaires, suivi de production du service</li>
-                                    <li>Encadrement d'une équipe de développeurs pour les phases d'évolution et d'exploitation du service, organisation des comités de projet hebdomadaires</li>
+                                    <li>Service de gestion des ordres de paiement en ligne pour le compte de 4 grandes fédérations</li>
+                                    <li>Gestion de projet, suivi des évolutions, gestion des partenaires, suivi de production</li>
+                                    <li>Encadrement d'une équipe de développeurs, organisation des comités de projet hebdomadaires</li>
                                 </ul>
                                 <ul class="bullet-list" data-lang="en">
                                     <li>Online payment order management service for 4 major French federations</li>
-                                    <li>Project management, tracking of service evolution requests, partner management, service production monitoring</li>
-                                    <li>Supervision of a development team for the service evolution and operation phases, organization of weekly project committees</li>
+                                    <li>Project management, tracking of service evolution requests, partner management</li>
+                                    <li>Supervision of a development team, organization of weekly project committees</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div class="timeline-title-wrapper">
+                        
+                        <div class="timeline-item" id="experience-4">
+                            <div class="timeline-dot">
+                                <i class="timeline-icon fas fa-bicycle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2016 - 2018</div>
+                                <div class="timeline-subtitle">WORLDLINE</div>
                                 <div class="timeline-title" data-lang="fr">RESPONSABLE D'APPLICATION – CYKLEO</div>
                                 <div class="timeline-title" data-lang="en">APPLICATION MANAGER – CYKLEO</div>
-                                <div>
-                                    <span class="timeline-subtitle">WORLDLINE</span>
-                                    <span class="timeline-date">2016 - 2018</span>
-                                </div>
-                                <div class="timeline-summary" data-lang="fr">Conception et développement d'un service de location de vélos en libre-service.</div>
-                                <div class="timeline-summary" data-lang="en">Design and development of a self-service bike rental service.</div>
-                            </div>
-                            <div class="timeline-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-content-inner">
+                                <div class="timeline-description" data-lang="fr">Conception et développement d'un service de location de vélos en libre-service.</div>
+                                <div class="timeline-description" data-lang="en">Design and development of a self-service bike rental service.</div>
+                                
                                 <ul class="bullet-list" data-lang="fr">
                                     <li>Service de gestion de location de vélos en libre-service</li>
-                                    <li>Conception, rédaction de spécifications fonctionnelles et techniques, développements logiciels</li>
+                                    <li>Conception, rédaction de spécifications fonctionnelles et techniques, développements</li>
                                     <li>Elaboration de propositions commerciales, relation client et exploitation de la solution</li>
                                 </ul>
                                 <ul class="bullet-list" data-lang="en">
                                     <li>Self-service bike rental management service</li>
-                                    <li>Design, drafting of functional and technical specifications, software development</li>
+                                    <li>Design, drafting of functional and technical specifications, development</li>
                                     <li>Development of commercial proposals, client relations and solution operations</li>
                                 </ul>
                             </div>
@@ -827,23 +1359,24 @@
             <div class="section">
                 <h2 class="section-title" data-lang="fr">FORMATION ET DIPLÔME</h2>
                 <h2 class="section-title" data-lang="en">EDUCATION AND QUALIFICATION</h2>
-                <div class="timeline-item">
-                    <div class="timeline-header education-header">
-                        <div class="timeline-title-wrapper">
-                            <div class="timeline-title" data-lang="fr">DIPLÔME D'INGÉNIEUR INFORMATIQUE</div>
-                            <div class="timeline-title" data-lang="en">COMPUTER SCIENCE ENGINEERING DEGREE</div>
-                            <div>
-                                <span class="timeline-subtitle">POLYTECH GRENOBLE</span>
-                                <span class="timeline-date">2016</span>
-                            </div>
-                            <div class="timeline-summary" data-lang="fr">Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</div>
-                            <div class="timeline-summary" data-lang="en">Computer Networks and Multimedia Communication – Multimedia specialization</div>
-                            <div style="margin-top: 10px;">
-                                <span class="badge-education badge-inline" data-lang="fr"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>Mention Bien</span>
-                                <span class="badge-education badge-inline" data-lang="en"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>Upper Second-Class Honours</span>
-                                <span class="badge-major badge-inline" data-lang="fr"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,15.4V6.1L13.71,10.13L18.09,10.5L14.77,13.39L15.76,17.67M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>Major de promotion 2016</span>
-                                <span class="badge-major badge-inline" data-lang="en"><svg style="width:16px;height:16px;margin-right:6px;fill:white" viewBox="0 0 24 24"><path d="M12,15.4V6.1L13.71,10.13L18.09,10.5L14.77,13.39L15.76,17.67M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>Class Valedictorian 2016</span>
-                            </div>
+                
+                <div class="education-content">
+                    <div class="education-bg education-bg-1"></div>
+                    <div class="education-bg education-bg-2"></div>
+                    
+                    <div class="education-content-inner">
+                        <div class="education-date">2016</div>
+                        <div class="education-subtitle">POLYTECH GRENOBLE</div>
+                        <div class="education-title" data-lang="fr">DIPLÔME D'INGÉNIEUR INFORMATIQUE</div>
+                        <div class="education-title" data-lang="en">COMPUTER SCIENCE ENGINEERING DEGREE</div>
+                        <div class="education-description" data-lang="fr">Filière Réseaux Informatiques et Communication Multimédia – Option multimédia</div>
+                        <div class="education-description" data-lang="en">Computer Networks and Multimedia Communication – Multimedia specialization</div>
+                        
+                        <div class="badge-container">
+                            <span class="badge-education" data-lang="fr"><i class="fas fa-graduation-cap" style="margin-right:6px;"></i>Mention Bien</span>
+                            <span class="badge-education" data-lang="en"><i class="fas fa-graduation-cap" style="margin-right:6px;"></i>Upper Second-Class Honours</span>
+                            <span class="badge-major" data-lang="fr"><i class="fas fa-trophy" style="margin-right:6px;"></i>Major de promotion 2016</span>
+                            <span class="badge-major" data-lang="en"><i class="fas fa-trophy" style="margin-right:6px;"></i>Class Valedictorian 2016</span>
                         </div>
                     </div>
                 </div>
@@ -866,16 +1399,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gestion des timeline items
-            const timelineHeaders = document.querySelectorAll('.timeline-header:not(.education-header)');
-            timelineHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const content = this.nextElementSibling;
-                    content.classList.toggle('active');
-                });
-            });
-            
             // Gestion du profil intro en mode responsive
             const profileIntroHeader = document.querySelector('.profile-intro-header');
             const profileIntro = document.querySelectorAll('.profile-intro');
@@ -930,6 +1453,62 @@
             
             // Ajouter l'événement de clic sur le bouton de changement de langue
             languageSwitch.addEventListener('click', switchLanguage);
+            
+            // Animation de la timeline
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineProgress = document.getElementById('timeline-progress');
+            
+            // Animation d'apparition au défilement
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Garder l'observation pour permettre l'animation à chaque fois que l'élément entre dans la vue
+                    }
+                });
+            }, observerOptions);
+            
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Animation de la barre de progression
+            function updateProgress() {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const timelineWrapper = document.querySelector('.timeline-wrapper');
+                if (!timelineWrapper) return;
+                
+                const timelineWrapperTop = timelineWrapper.offsetTop;
+                const timelineWrapperHeight = timelineWrapper.offsetHeight;
+                const windowHeight = window.innerHeight;
+                
+                let progress = 0;
+                if (scrollTop > timelineWrapperTop - windowHeight) {
+                    progress = (scrollTop - (timelineWrapperTop - windowHeight)) / 
+                               (timelineWrapperHeight + windowHeight);
+                    progress = Math.min(progress * 1.5, 1); // Ajustement pour que la progression semble plus rapide
+                }
+                
+                if (timelineProgress) {
+                    timelineProgress.style.height = `${progress * 100}%`;
+                }
+            }
+            
+            window.addEventListener('scroll', updateProgress);
+            updateProgress(); // Initialiser la barre de progression
+            
+            // Déclencher l'animation initiale pour le premier élément
+            setTimeout(() => {
+                if (timelineItems[0]) {
+                    timelineItems[0].classList.add('visible');
+                }
+            }, 500);
             
             // Exécuter au chargement
             checkScreenSize();
