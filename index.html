@@ -12,6 +12,10 @@
             --primary: #009881;
             --primary-light: #4ECDC4;
             --primary-dark: #00796B;
+            /* Nouvelles couleurs sombres pour le header */
+            --header-dark: #1E3A38;
+            --header-medium: #0F5A54;
+            --header-light: #0B756C;
             --accent: #FF4800;
             --accent-light: #FFAA00;
             --light: #F8FAFB;
@@ -84,21 +88,21 @@
             position: relative;
         }
         
-        /* Header Section */
+        /* Header Section avec nouveau dégradé sombre */
         header {
             grid-column:1/-1;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--header-dark) 0%, var(--header-medium) 60%, var(--header-light) 100%);
             color: white;
             padding: var(--space-sm) var(--space-sm);
             position: relative;
             overflow: hidden;
         }
         
-        /* Éléments de glassmorphism */
+        /* Éléments de glassmorphism adaptés au fond sombre */
         .glass-circle {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 0;
@@ -121,7 +125,7 @@
         .glass-pill {
             position: absolute;
             border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             height: 40px;
@@ -221,7 +225,7 @@
             border-radius: 20px;
             backdrop-filter: blur(5px);
             margin-right: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,.15);
         }
         
         .contact-item, .contact-item a {
@@ -231,7 +235,7 @@
         
         .contact-item:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,.15);
+            box-shadow: 0 6px 12px rgba(0,0,0,.2);
             background-color: rgba(255,255,255,.25);
         }
         
@@ -302,7 +306,7 @@
             top: 3px;
             height: 24px;
             width: 32px;
-            background-color: var(--primary-dark);
+            background-color: var(--header-dark);
             border-radius: 24px;
             transition: transform var(--transition-slow);
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
